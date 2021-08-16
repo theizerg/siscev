@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Votantes;
+use App\Models\Personal;
 use Illuminate\Http\Request;
 
 class VotantesController extends Controller
@@ -14,7 +15,9 @@ class VotantesController extends Controller
      */
     public function index()
     {
-        //
+       $votantes = Votantes::get();
+
+       return view ('admin.votantes.index', compact('votantes'));
     }
 
     /**
@@ -28,6 +31,17 @@ class VotantesController extends Controller
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function personal($id)
+    {
+       $personal = Personal::where('gerencia_id',$id)->get();
+       return $personal;
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -35,7 +49,32 @@ class VotantesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       //dd();
+        $votante = Votantes::where('personal_id',$request->personal_id)->count();
+
+        if ($votante <> 0) {
+            
+             $notification = array(
+            'message' => '¡El funcionario ya existe!',
+            'alert-type' => 'error'
+        );
+             return redirect()->back()->with($notification);
+        }
+
+        $votos = new Votantes();
+
+       $votos->gerencia_id = $request->gerencia_id;
+       $votos->personal_id = $request->personal_id;
+       $votos->confirmed = $request->confirmed;
+
+       $votos->save();
+
+         $notification = array(
+            'message' => '¡Datos ingresados!',
+            'alert-type' => 'success'
+        );
+             return redirect()->back()->with($notification);
+
     }
 
     /**

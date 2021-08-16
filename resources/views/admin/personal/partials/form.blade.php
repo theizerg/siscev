@@ -31,7 +31,7 @@
 
           <div class="form-group">
                 <label for="status_id">Estado del empleado</label>
-                <div class="checkbox icheck">
+                <div class="checkbox">
                   <label>
                     <input type="radio" name="status_id" value="1" checked> Activo&nbsp;&nbsp;
                     <input type="radio" name="status_id" value="2"> Jubilado

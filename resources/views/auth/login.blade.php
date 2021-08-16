@@ -28,7 +28,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn blue darken-4 form-control" id="boton">
+                                    <button type="submit" class="btn green darken-4 form-control" id="boton">
                                         <i class="fas fa-sign-in-alt text-white" id="ajax-icon"></i> <span class="text-white ml-3">{{ __('Iniciar Sesión') }}</span>
                                     </button>                           
                                 </div>   
@@ -41,13 +41,13 @@
         </div>
          <div class="col-sm-6 col-lg-5 col-xxl-4  align-self-center order-2 order-sm-1">
             <div class="card-group">
-                <div class="card p-4 mt-5 blue darken-4 elevation-1">
+                <div class="card p-4 mt-5 green darken-4 elevation-1">
                   <div class="card-header text-white text-center">
-                    <h4>LARADMIN</h4>
+                    <h4>SISCEV</h4>
                   </div>
                     <div class="card-body px-lg-5 py-lg-5 text-white  text-center">
                         <i class="mdi mdi-laptop fa-7x"></i>
-                        <p class="text-muted text-white">Sistema desarrollado para iniciar proyectos en Laravel.</p>
+                        <p class="text-muted text-white">Sistema desarrollado para el control y estadística de votos.</p>
                         
                     </div>
                 </div><br>

@@ -82,15 +82,7 @@
       $('.select2').select2()
     });
 </script>
-<script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-      });
-</script>
+
 <script>
   $(document).ready(function () {
   $('#personal_form').validate({

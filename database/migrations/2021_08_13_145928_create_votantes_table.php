@@ -17,7 +17,7 @@ class CreateVotantesTable extends Migration
             $table->increments('id');
             $table->foreignId('gerencia_id')->references('id')->on('gerencias');
             $table->foreignId('personal_id')->references('id')->on('personals');
-            $table->boolean('confirmed')->nullable()->default(false);
+            $table->smallInteger('confirmed')->nullable()->default(0);
             $table->timestamps();
         });
     }

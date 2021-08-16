@@ -78,9 +78,91 @@
       
    
 @else 
-<div class="row">
-    <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button" data-tooltip="tooltip" title="Toggle">asdasds</a>
-</div>  
+<section class="content">
+     <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-6 col-6">
+            <!-- small box -->
+            <div class="small-box green darken-3 text-white">
+              <div class="inner">
+                <h3>{{ App\Models\Personal::count() }}</h3>
+
+                <p>FUNCIONARIOS </p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-user-tie"></i>
+              </div>
+              <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-6 col-6">
+            <!-- small box -->
+            <div class="small-box green darken-3 text-white">
+              <div class="inner">
+                <h3>{{ App\Models\Gerencias::count() }}</h3>
+
+                <p>GERENCIAS </p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-building"></i>
+              </div>
+              <a href="/gerencias" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-6 col-6">
+            <!-- small box -->
+            <div class="small-box green darken-4 text-white">
+              <div class="inner">
+                <h3>{{ App\Models\Votantes::where('confirmed',1)->count() }}</h3>
+
+                <p>FUNCIONARIOS QUE EJERCIERON EL VOTO</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-check"></i>
+              </div>
+              <a href="/gerencias" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-6 col-6">
+            <!-- small box -->
+            <div class="small-box green darken-4 text-white">
+              <div class="inner">
+                <h3>{{ App\Models\Votantes::where('confirmed',0)->count() }}</h3>
+
+                <p>FUNCIONARIOS QUE NO EJERCIERON EL VOTO</p>
+              </div>
+              <div class="icon">
+                <i class="fas fa-not-equal"></i>
+              </div>
+              <a href="/gerencias" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+            </div>
+          </div>
+           <div class="col-sm-12">
+             <div class="card">
+                <div class="card-header">
+                    <h3>Datos generales</h3>
+                </div>
+                 <div class="card-body">
+                      <div id="chart7"></div>
+                 </div>
+             </div>
+            </div>
+            <div class="col-sm-12">
+                 <div class="card">
+                <div class="card-header">
+                    <h3>Datos generales</h3>
+                </div>
+                 <div class="card-body">
+                      <div id="chart8"></div>
+                 </div>
+             </div>
+            </div>
+            
+        </div>
+      </div>
+  </div>
+</section>
 @endif
 
 
@@ -88,56 +170,109 @@
 
 </section>
 @endsection
- @if ( Auth::user()->hasRole('Administrador'))
+ 
 @push('scripts')
 
-{{-- Create the chart with javascript using canvas --}}
-    <script>
-        // Get Canvas element by its id
-        employee_chart = document.getElementById('employee').getContext('2d');
-        chart = new Chart(employee_chart,{
-            type:'line',
-            data:{
-                labels:[
-                    /*
-                        this is blade templating.
-                        we are getting the date by specifying the submonth
-                     */
-                    '{{Carbon\Carbon::now()->subMonths(3)->toFormattedDateString()}}',
-                    '{{Carbon\Carbon::now()->subMonths(2)->toFormattedDateString()}}',
-                    '{{Carbon\Carbon::now()->subMonths(1)->toFormattedDateString()}}',
-                    '{{Carbon\Carbon::now()->subMonths(0)->toFormattedDateString()}}'
-                    ],
-                datasets:[{
-                    label:'Usuarios guardados en los últimos 4 meses.',
-                    data:[
-                        
-                        '{{$emp_count_4}}',
-                        '{{$emp_count_3}}',
-                        '{{$emp_count_2}}',
-                        '{{$emp_count_1}}'
-                    ],
-                    backgroundColor: [
-                        'rgba(178,235,242 ,1)'
-                    ],
-                    borderColor: [
-                        'rgba(0,150,136 ,1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
+<script>
+  
+$(function () {
+
+    chart7();
+    chart8();
+});
+    function chart7() {
+    var options = {
+        chart: {
+            width: 850,
+            type: 'pie',
+        },
+        labels: ['Personal que ejerció el voto', 'Personal que no ejerció el voto'],
+        series: [{{ App\Models\Votantes::where('confirmed',1)
+                    ->count() }}, {{ App\Models\Votantes::where('confirmed',0)
+                    ->count() }}],
+        responsive: [{
+            breakpoint: 850,
             options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero:true
-                        }
-                    }]
+                chart: {
+                    width: 400
+                },
+                legend: {
+                    position: 'bottom'
                 }
             }
-        });
-    </script>
-@endpush
-@else
+        }]
+    }
 
-@endif
+    var chart = new ApexCharts(
+        document.querySelector("#chart7"),
+        options
+    );
+
+    chart.render();
+}
+function chart8() {
+    var options = {
+        chart: {
+            width: 850,
+            type: 'pie',
+        },
+        labels: [
+
+                 'CONSULTORIA JURIDICA',
+                 'GCIA EJEC DE GESTION DEL TALENTO HUMANO',
+                 'GCIA EJEC DE ADMINISTRACION',
+                 'GCIA EJEC TECNOLOGIA DE LA INFORMACION',
+                 'GCIA EJEC DE RESGUARDO INSTITUCIONAL',
+                 'GCIA EJEC DE COOP Y FINANC  NACIONAL',
+                 'GCIA EJEC  PLANIFI Y GESTION ESTRATEGICA',
+                 'GCIA. EJEC.  DE ADMINISTRACION DE FONDOS',
+                 'AUDITORIA INTERNA',
+                'GCIA EJEC DE FINANZAS',
+                'PRESIDENCIA',
+                'GCIA EJEC DE INFOR Y RELACIONES PUBLICAS',
+                'GCIA. EJEC. FONDOS PARA EL DESARROLLO',
+                'GCIA PREINVERSION Y ASISTENCIA TECNICA',
+                'VICEPRESIDENCIA EJECUTIVA',
+                'GCIA EJEC SECRETARIA DE LA PRESIDENCIA',
+                'GCIA EJEC DE COOP Y FINANC INTERNACIONAL'
+                 ],
+        series: [
+                {{App\Models\Votantes::where('gerencia_id',1)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',2)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',3)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',4)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',5)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',6)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',7)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',8)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',9)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',10)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',11)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',12)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',13)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',14)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',15)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',16)->count() }},
+                {{ App\Models\Votantes::where('gerencia_id',17)->count() }}],
+        responsive: [{
+            breakpoint: 800,
+            options: {
+                chart: {
+                    width: 400
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    }
+
+    var chart = new ApexCharts(
+        document.querySelector("#chart8"),
+        options
+    );
+
+    chart.render();
+}
+</script>
+@endpush

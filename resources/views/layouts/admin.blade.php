@@ -14,7 +14,7 @@
         <div class="wrapper">
 
 
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light blue-gradient-dark">
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light green-gradient-dark">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
         <li class="nav-item">
@@ -49,7 +49,7 @@
                     <span class="hidden-xs">{{ Auth::user()->display_name}} </span>
                     </a>
                     <ul class="dropdown-menu text-white">
-                    <li class="user-header blue darken-4">
+                    <li class="user-header green darken-3">
                        <!-- <img src="{{ asset('images/user/user1-128x128.jpg') }}" class="img-circle" alt="User Image">-->
                         <i class="fa fa-user fa-5x" style="color:#fff;"></i>
                         <p>
@@ -134,7 +134,7 @@
 
         <!-- Control Sidebar -->
         <!-- Uncomment this line to activate the control right sidebar menu
-        @@include('layouts.partials.sidebar')
+      
         -->
         </div>
 
@@ -143,7 +143,9 @@
         <script src="{{asset('js/app.js')}}"></script>
         <script src="{{asset('js/some.js')}}"></script>
         <script src="{{ asset('js/system.js') }}"></script>
-        
+        <script>
+            $('.select2').select2()
+        </script>
          <script>
 
          @if(Session::has('message'))
@@ -180,7 +182,7 @@
 
         #opciones{
 
-                    background: #b71c1c;
+                    background: #2B89D2;
 
 
                 }

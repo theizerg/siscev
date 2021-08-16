@@ -15,9 +15,7 @@ class CreateGerenciasTable extends Migration
     {
         Schema::create('gerencias', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('codigo_nomina');
             $table->string('descricion');
-            $table->string('fecha_registro');
             $table->timestamps();
         });
     }

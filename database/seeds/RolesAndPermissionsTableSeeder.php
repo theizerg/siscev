@@ -94,6 +94,25 @@ class RolesAndPermissionsTableSeeder extends Seeder
                                     'RegistrarVoto',
                                     'EditarVoto',
                                     'EliminarVoto',
+                                    
+                                    /* Votantes */
+                                    'VerVotante',
+                                    'RegistrarVotante',
+                                    'EditarVotante',
+                                    'EliminarVotante',
+
+                                     /* Votos */
+                                    'VerVoto',
+                                    'RegistrarVoto',
+                                    'EditarVoto',
+                                    'EliminarVoto',
+
+
+                                    /* Personal */
+                                    'VerPersonal',
+                                    'RegistrarPersonal',
+                                    'EditarPersonal',
+                                    'EliminarPersonal',
 
 
 

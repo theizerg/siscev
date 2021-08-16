@@ -1,4 +1,4 @@
-<div class="modal fade" id="personalModal{{$personal->id}}" role="dialog" aria-labelledby="formModal"
+<div class="modal fade" id="personalModal{{$personal->id}}" aria-labelledby="formModal"
           aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content ">

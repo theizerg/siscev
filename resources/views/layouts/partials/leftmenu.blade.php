@@ -21,7 +21,7 @@
         </div>
       </div>
     <!-- Sidebar Menu -->
-        <nav class="mt-2">
+    <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true">
 
         <!-- Add icons to the links using the .nav-icon class
@@ -37,15 +37,10 @@
             <i class="right fas fa-angle-left"></i>
           </p>
         </a>
-
-
-          <ul class="nav nav-treeview">
-           <li class="nav-item has-treeview">
-           
-        </ul>
         <ul class="nav nav-treeview ">
+           @can('VerUsuario')
            <li class="nav-item has-treeview menu-open">
-             @can('VerUsuario')
+            
                 <a href="/user" class="nav-link">
                   <i class="fas fa-user nav-icon"></i>
                   <p>Mostrar usuarios</p>
@@ -53,7 +48,6 @@
           </li>
           @endcan
         </ul>
-        </li>
         @can('VerRole')
           <li class="nav-item has-treeview ">
              <a href="/roles/create" class="nav-link">
@@ -87,22 +81,15 @@
               </a>
           </li>
           @endcan
-         
-          
-          
-          
-      
-          
-           </ul>
-        </ul>
-
-
-      </li>
-
-       </li>
-    </ul>
-</nav>
-
-    <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
+            @can('VerVotante')
+           <li class="nav-item has-treeview ">
+             <a href="/votantes" class="nav-link">
+                  <i class="fas fa-check nav-icon"></i>
+                  <p>Control de votos</p>
+              </a>
+          </li>
+          @endcan
+        </li>
+      </ul>
+    </nav>
+  </div>

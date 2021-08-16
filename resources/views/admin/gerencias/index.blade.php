@@ -28,13 +28,11 @@
               </li>
            
             </ul><br>
-          <table id="tableExport" class="display table table-hover ">
+              <table id="tableExport" class="display table table-hover ">
                     <thead>
                     <tr>
                     <th>#</th>
-                    <th>Código de nónima</th>
                     <th>Descripción</th>
-                    <th>Fecha de registro</th>
                     <th>Opciones</th> 
                     </tr>
                     </thead>
@@ -42,9 +40,9 @@
                     @foreach ($gerencias as $gerencia)
                     <tr class="row{{ $gerencia->id }}">
                     <td>{{ $gerencia->id }}</td>
-                    <td>{{ $gerencia->codigo_nomina }}</td>
+                   
                     <td>{{ $gerencia->descricion }}</td>
-                    <td>{{ $gerencia->fecha_registro }}</td>
+                   
                     <td>
                      <a  data-toggle="modal" data-target="#gerenciaModal{{$gerencia->id}}" class="btn btn-round green darken-3"><i class="mdi mdi-pencil mt-2 text-white" data-toggle="tooltip" data-placement="top"
                       title="Editar datos de la gerencia."></i></a> 

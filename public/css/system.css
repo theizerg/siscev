@@ -25,6 +25,10 @@
 .blue-gradient-dark{
   background:linear-gradient(to right,#2B89D2,#0C59A7,#085E90);
 }
+  
+.green-gradient-dark{
+  background:linear-gradient(to right,#359008,#0CA70C,#359008);
+}
 
 .red-gradient-dark{
   background:linear-gradient(to right,#f31919,#b90606,#6b0101);
