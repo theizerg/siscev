@@ -59,19 +59,7 @@
           </div>
     </div>
 
-    <div class="col-sm-12">
-         <div class="card ">
-                <div class="card-header">
-                   <div class="card-body">
-                     <div class="container-fluid">
-                      <div class="card-panel">
-                      <canvas id="employee"></canvas>
-                       </div>
-                   </div>
-               </div>
-            </div>
-        </div>
-    </div>
+    
 </div>
       
    
@@ -119,7 +107,7 @@
                 <div class="icon">
                   <i class="fas fa-check"></i>
                 </div>
-                <a href="/gerencias" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <div class="col-lg-6 col-6">
@@ -133,7 +121,7 @@
                 <div class="icon">
                   <i class="fas fa-not-equal"></i>
                 </div>
-                <a href="/gerencias" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <div class="col-sm-12">

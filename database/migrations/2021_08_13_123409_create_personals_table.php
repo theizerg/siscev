@@ -19,9 +19,9 @@ class CreatePersonalsTable extends Migration
             $table->string('tx_apellidos');
             $table->string('cedula')->unique();
             $table->smallInteger('status')->default(1);
-            $table->string('fecha_emisison')->nullable();
+            $table->string('fecha_emisison')->default(date('d/m/Y'));
             $table->foreignId('gerencia_id')->references('id')->on('gerencias');
-            $table->foreignId('usuario_id')->references('id')->on('users')->default(1);
+            //$table->foreignId('usuario_id')->references('id')->on('users')->default(1);
             $table->timestamps();
         });
     }
