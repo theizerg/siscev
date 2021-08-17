@@ -14019,8 +14019,8 @@ __webpack_require__(/*! @iconify/iconify */ "./node_modules/@iconify/iconify/dis
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\laradmin\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\laradmin\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\siscev\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\siscev\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

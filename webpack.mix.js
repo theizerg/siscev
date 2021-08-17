@@ -58,6 +58,16 @@ mix.scripts([
     'node_modules/admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js',
     'node_modules/admin-lte/plugins/jquery-validation/jquery.validate.min.js',
     'node_modules/admin-lte/plugins/jquery-validation/additional-methods.min.js',
+    'node_modules/otika/assets/bundles/amcharts4/core.js',
+    'node_modules/otika/assets/bundles/amcharts4/charts.js',
+    'node_modules/otika/assets/bundles/amcharts4/animated.js',
+    'node_modules/otika/assets/bundles/amcharts4/worldLow.js',
+    'node_modules/otika/assets/bundles/amcharts4/maps.js',
+    'node_modules/admin-lte/plugins/chart.js/Chart.min.js',
+    'node_modules/admin-lte/plugins/flot/jquery.flot.js',
+    'node_modules/admin-lte/plugins/flot/plugins/jquery.flot.resize.js',
+    'node_modules/admin-lte/plugins/flot/plugins/jquery.flot.pie.js',
+    'node_modules/otika/assets/bundles/echart/echarts.js',
     'node_modules/admin-lte/dist/js/adminlte.min.js',,
 
 ], 'public/js/app.js');

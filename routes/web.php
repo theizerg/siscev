@@ -29,6 +29,8 @@ Route::middleware(['auth',])->group(function () {
   Route::get('/personal/borrar/{personal_id}',   'PersonalController@borrar');
 
   Route::resource('votantes',   'VotantesController');
+  Route::get('/resultado/votantes',   'VotantesController@resultado');
+  Route::post('/resultado/votantes',   'VotantesController@votante');
   Route::get('/votantes/{gerencia_id}/personal',   'VotantesController@personal');
 
 });

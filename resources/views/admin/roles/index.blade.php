@@ -3,6 +3,7 @@
 @section('page_title', 'Listado de Roles')
 @section('content')
 
+      <div class="container">
         <div class="col-md-6">
           <div class="btn-group">
            
@@ -15,7 +16,7 @@
         </div>
       <br>
       <div class="row">
-      	<div class="col-md-12">
+        <div class="col-md-12">
           <div class="card card-line-primary">
             <div class="card-header  ">
               <h5>Listado de roles</h5>
@@ -46,7 +47,7 @@
                     <th>#</th>
                     <th>Nombre completo</th>
                     <th>Usuarios que están usando el Role</th>
-                    <th>Organismo - Sucursal</th>
+                    
                     <th>Opciones</th> 
                     </tr>
                     </thead>
@@ -56,7 +57,7 @@
                     <td>{{ $role->id }}</td>
                     <td>{{ $role->name }}</td>
                     <td>{{ $role->count_user }}</td>
-                    <td>{{ $role->organismo->nombre_negocio }} - {{ $role->sucursal->nombre }}</td>
+                    
                     <td>
                       @can('EditarRole')
                        <a class="btn btn-round blue darken-4" data-toggle="tooltip" data-placement="top"
@@ -76,5 +77,6 @@
    
       </div>
 
+      </div>
 
 @endsection

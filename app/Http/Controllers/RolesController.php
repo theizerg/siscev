@@ -5,9 +5,21 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Models\Log\LogSistema;
+use App\Models\User;
 
 class RolesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:VerRole')->only('index'); 
+        $this->middleware('permission:RegistrarRole')->only('create');
+        $this->middleware('permission:RegistrarRole')->only('store');
+        $this->middleware('permission:EditarRole')->only('edit');
+        $this->middleware('permission:EditarRole')->only('update');
+        $this->middleware('permission:VerRole')->only('show'); 
+
+    }
+ 
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +28,12 @@ class RolesController extends Controller
     public function index()
     {
         $roles = Role::get();
-        //dd($roles);
+       
+        
+
+       $roles = $roles->each(function ($role){
+       $role->count_user = User::role($role->name)->count();
+     });
         return view ('admin.roles.index', compact('roles'));
     }
     /**
@@ -37,16 +54,25 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Role::create($request->all());
+        //dd($request);
+        $role = new Role();
+        $role->name         = $request->name;
+       
+        $role->guard_name   = 'web';
 
-        $log = new LogSistema();
-        
-        $log->user_id = auth()->user()->id;
-        $log->tx_descripcion = 'El usuario: '.auth()->user()->display_name.' Ha guardado nuevo role al sistema: '.$request->name.' a las: '
-        . date('H:m:i').' del día: '.date('d/m/Y');
-        $log->save();
+        $role->save();
 
-        return json_encode(['success' => true, 'user_id' => $user->encode_id]);
+        if ($role) {
+            
+            $notification = array(
+            'message' => '¡Datos ingresados!',
+            'alert-type' => 'success');
+
+            return \Redirect::back()->with($notification);
+
+
+        }
+
     }
 
     /**
@@ -88,13 +114,23 @@ class RolesController extends Controller
     public function update(Request $request, $id)
     {
         $role = Role::find(\Hashids::decode($id)[0]);
-        $role->guard_name = 'web';
-        $role->name = $request->name;
-        $role->icon = $request->icon;
+        
+        $role->name         = $request->name;
+       
+        $role->guard_name   = 'web';
 
         $role->save();
 
-        return json_encode(['success' => true, 'user_id' => $role->encode_id]);
+         if ($role) {
+            
+            $notification = array(
+            'message' => '¡Datos ingresados!',
+            'alert-type' => 'success');
+
+            return \Redirect::back()->with($notification);
+
+
+        }
 
 
     }

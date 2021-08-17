@@ -50,7 +50,7 @@ class PermissionController extends Controller
         $log->tx_descripcion  = 'El usuario: '.auth()->user()->display_name.' Ha ingresado a ver los permisos del Role: '.$role->name.' a las: '. date('H:m:i').' del día: '.date('d/m/Y');
         $log->save();
 
-        return view('admin.permission.index',compact('name','role','roles'));
+        return view('admin.permission.index',compact('name','role'));
     }
 
 

@@ -1,5 +1,5 @@
 $('#tableExport').DataTable({
-    "order": [[ 0, "desc" ]],
+    "order": [[ 3, "desc" ]],
     dom: 'Bfrtip',
     buttons: [
       'copy', 'csv', 'excel', 'pdf', 'print'

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Votantes;
 use App\Models\Personal;
+use App\Models\Gerencias;
 use Illuminate\Http\Request;
 
 class VotantesController extends Controller
@@ -25,9 +26,9 @@ class VotantesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function resultado()
     {
-        //
+         return view ('admin.votantes.resultados');
     }
 
     /**
@@ -35,11 +36,33 @@ class VotantesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function personal($id)
     {
        $personal = Personal::where('gerencia_id',$id)->get();
        return $personal;
     }
+
+    public function votante(Request $request)
+    {   
+          //dd($request);
+
+           $voto = Votantes::where('gerencia_id',$request->estado_id)
+           ->where('confirmed',1)
+           ->count();
+
+            $Novoto = Votantes::where('gerencia_id',$request->estado_id)
+           ->where('confirmed',0)
+           ->count();
+            
+           $gerencia = Gerencias::find($request->estado_id);
+           $descripcion = $gerencia->descricion;
+
+          
+           return view('admin.votantes.resultados',compact('voto','Novoto','descripcion'));
+     }
+
+
 
     /**
      * Store a newly created resource in storage.

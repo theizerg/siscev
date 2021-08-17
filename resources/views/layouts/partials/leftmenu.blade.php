@@ -50,7 +50,7 @@
         </ul>
         @can('VerRole')
           <li class="nav-item has-treeview ">
-             <a href="/roles/create" class="nav-link">
+             <a href="/roles" class="nav-link">
                   <i class="far fa-plus-square nav-icon"></i>
                  <p>Mostrar roles</p>
               </a>

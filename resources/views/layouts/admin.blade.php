@@ -1,7 +1,7 @@
  <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>SERVITEC - @yield('title')</title>
+  <title>BANDES - @yield('title')</title>
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
   <link rel="stylesheet" href="{{asset('css/system.css')}}">
@@ -122,7 +122,7 @@
             </section>
         </div>
 
-
+        <br><br><br><br><br>
 
         <!-- Main Footer -->
         <footer class="main-footer">
@@ -138,9 +138,10 @@
         -->
         </div>
 
-        <!-- REQUIRED JS SCRIPTS -->
+        <!-- REQUIRED JS SCRIPTS --> 
         <!-- jQuery -->
         <script src="{{asset('js/app.js')}}"></script>
+       
         <script src="{{asset('js/some.js')}}"></script>
         <script src="{{ asset('js/system.js') }}"></script>
         <script>

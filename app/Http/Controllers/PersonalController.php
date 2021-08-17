@@ -42,7 +42,7 @@ class PersonalController extends Controller
         $personal->tx_apellidos = $request->tx_apellidos;
         $personal->cedula = $request->cedula;
         $personal->status = $request->status_id;
-        $personal->fecha_emision =date('d/m/Y');
+        //$personal->fecha_emision =date('d/m/Y');
         $personal->gerencia_id = $request->estado_id;
         $personal->usuario_id = \Auth::user()->id;
 
@@ -95,7 +95,7 @@ class PersonalController extends Controller
         $personal->tx_apellidos = $request->tx_apellidos;
         $personal->cedula = $request->cedula;
         $personal->status = $request->status_id;
-        $personal->fecha_emision =date('d/m/Y');
+        //$personal->fecha_emision =date('d/m/Y');
         $personal->gerencia_id = $request->estado_id;
         $personal->usuario_id = \Auth::user()->id;
 
@@ -103,7 +103,7 @@ class PersonalController extends Controller
 
         if ($personal) {
               $notification = array(
-            'message' => '¡Datos ingresados!',
+            'message' => '¡Datos actualizados!',
             'alert-type' => 'success'
         );
              return redirect()->back()->with($notification);

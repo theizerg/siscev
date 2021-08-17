@@ -52,36 +52,8 @@
                   <span class="missing_alert text-danger" id="name_alert"></span>
               </div>
                 </div> 
-                 <div class="col-sm-4">
-                   <div class="form-group pading">
-                <label class="font-weight-bolder" for="name">Organismo</label>
-                @php
-                $organismos = App\Models\Organismos::where('role_id',\Auth::user()->role_id)->get()
-                @endphp
-                <select name="organismo_id" class="form-control">
-                  @foreach ($organismos as $organismo)
-                   <option value="{{$organismo->id}} "> {{$organismo->nombre_negocio}} </option>
-                  @endforeach
-                </select>
-
-                <span class="missing_alert text-danger" id="name_alert"></span>
-              </div>
-                </div>
-                 <div class="col-sm-4">
-                   <div class="form-group pading">
-                <label class="font-weight-bolder" for="name">Sucursales</label>
-                @php
-                $sucursales = App\Models\Sucursales::where('organismo_id',\Auth::user()->role_id)->get()
-                @endphp
-                <select name="sucursal_id" class="form-control">
-                  @foreach ($sucursales as $sucursal)
-                   <option value="{{$sucursal->id}} "> {{$sucursal->nombre}} </option>
-                  @endforeach
-                </select>
-
-                <span class="missing_alert text-danger" id="name_alert"></span>
-              </div>
-                </div>
+                
+                
               </div>
               
              
