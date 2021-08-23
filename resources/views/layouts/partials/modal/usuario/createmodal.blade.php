@@ -15,37 +15,37 @@
                     <div class="col-sm-6">
                       <div class="form-group pading">
                         <label for="name">Nombres</label>
-                        <input id="name" type="name" class="form-control" name="name"   autocomplete="name" autofocus placeholder="Nombres">
+                        <input required="" id="name" type="name" class="form-control" name="name"   autocomplete="name" autofocus placeholder="Nombres">
                        </div>
                     </div>
                     <div class="col-sm-6">
                     <div class="form-group">
                        <label for="last_name">Apellidos</label>
-                        <input id="lastname" type="lastname" class="form-control" name="lastname"   autocomplete="lastname" autofocus placeholder="Apellidos">
+                        <input required="" id="lastname" type="lastname" class="form-control" name="lastname"   autocomplete="lastname" autofocus placeholder="Apellidos">
                      </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                        <label for="last_name">Usuario</label>
-                        <input id="username" type="username" class="form-control" name="username"  autocomplete="username" autofocus placeholder="Usuario">
+                        <input required="" id="username" type="username" class="form-control" name="username"  autocomplete="username" autofocus placeholder="Usuario">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                        <label for="email">Correo Electrónico</label>
-                        <input id="email" type="email" class="form-control "name="email"   autocomplete="email" autofocus placeholder="Contraseña">
+                        <input required="" id="email" type="email" class="form-control "name="email"   autocomplete="email" autofocus placeholder="Contraseña">
                        </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                        <label for="password">Nueva Contraseña</label>
-                       <input id="password" type="password" class="form-control" name="password" value="{{ old('password') }}"  autocomplete="password" autofocus placeholder="Contraseña">
+                       <input required="" id="password" type="password" class="form-control" name="password" value="{{ old('password') }}"  autocomplete="password" autofocus placeholder="Contraseña">
                       </div>
                     </div>
                     <div class="col-sm-6">
                        <div class="form-group">
                         <label for="password_confirmation">Confirmar Nueva Contraseña</label>
-                         <input id="password_confirmation" type="password" class="form-control" name="password_confirmation"  autocomplete="password_confirmation" autofocus placeholder="Contraseña">
+                         <input required="" id="password_confirmation" type="password" class="form-control" name="password_confirmation"  autocomplete="password_confirmation" autofocus placeholder="Contraseña">
                       </div>
                     </div>
                     <div class="col-sm-6">
@@ -57,7 +57,7 @@
                           <div class="checkbox icheck">
                             <label class="font-weight-bolder">
                               @foreach($roles as $role)
-                              <input type="radio" name="role" value="{{$role->name}}" checked> {{$role->name}}&nbsp;&nbsp;
+                              <input required="" type="radio" name="role" value="{{$role->name}}" checked> {{$role->name}}&nbsp;&nbsp;
                               @endforeach
                             </label>
                           </div>
@@ -69,8 +69,8 @@
                           <label for="status">Acceso al sistema</label>
                           <div class="checkbox icheck">
                             <label>
-                              <input type="radio" name="status" value="1"> Activo&nbsp;&nbsp;
-                              <input type="radio" name="status" value="0"> Deshabilitado&nbsp;&nbsp;
+                              <input required="" type="radio" name="status" value="1"> Activo&nbsp;&nbsp;
+                              <input required="" type="radio" name="status" value="0"> Deshabilitado&nbsp;&nbsp;
                             </label>
                           </div>
                         </div>

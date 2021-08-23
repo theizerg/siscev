@@ -9,7 +9,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12">
-          <div class="card card-line-primary">
+          <div class="card card-line-primary"> 
             <div class="card-header">
                 <h5 class="font-weight-bold">Permisos del rol {{ $name }}</h5>
                 <div class="card-tools"></div>
@@ -129,6 +129,96 @@
                           </label>
                         </div>
                       </td>
+                      <td>
+                        Ver Voto</br>
+                        <div class="checkbox icheck">
+                          <label>
+                            <input type="checkbox" name="permissions[]" value="VerVoto" {{ $role->hasPermissionTo('VerVoto') ? 'checked' : '' }}>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        Registrar Voto</br>
+                        <div class="checkbox icheck">
+                          <label>
+                            <input type="checkbox" name="permissions[]" value="RegistrarVoto" {{ $role->hasPermissionTo('VerVoto') ? 'checked' : '' }}>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        Editar Voto</br>
+                        <div class="checkbox icheck">
+                          <label>
+                            <input type="checkbox" name="permissions[]" value="EditarVoto" {{ $role->hasPermissionTo('EditarVoto') ? 'checked' : '' }}>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        Eliminar Voto</br>
+                        <div class="checkbox icheck">
+                          <label>
+                            <input type="checkbox" name="permissions[]" value="EliminarVoto" {{ $role->hasPermissionTo('EliminarVoto') ? 'checked' : '' }}>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        Ver Votante</br>
+                        <div class="checkbox icheck">
+                          <label>
+                            <input type="checkbox" name="permissions[]" value="VerVotante" {{ $role->hasPermissionTo('VerVoto') ? 'checked' : '' }}>
+                          </label>
+                        </div>
+                      </td>
+                      <tr>
+                         <td>
+                        Registrar Votante</br>
+                        <div class="checkbox icheck">
+                          <label>
+                            <input type="checkbox" name="permissions[]" value="RegistrarVotante" {{ $role->hasPermissionTo('RegistrarVotante') ? 'checked' : '' }}>
+                          </label>
+                        </div>
+                      </td>
+                       <td>
+                        Editar Votante</br>
+                        <div class="checkbox icheck">
+                          <label>
+                            <input type="checkbox" name="permissions[]" value="EditarVotante" {{ $role->hasPermissionTo('EditarVotante') ? 'checked' : '' }}>
+                          </label>
+                        </div>
+                      </td>
+                       <td>
+                        Eliminar Votante</br>
+                        <div class="checkbox icheck">
+                          <label>
+                            <input type="checkbox" name="permissions[]" value="EliminarVotante" {{ $role->hasPermissionTo('EliminarVotante') ? 'checked' : '' }}>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        Ver Personal</br>
+                        <div class="checkbox icheck">
+                          <label>
+                            <input type="checkbox" name="permissions[]" value="VerPersonal" {{ $role->hasPermissionTo('VerPersonal') ? 'checked' : '' }}>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        Registrar Personal</br>
+                        <div class="checkbox icheck">
+                          <label>
+                            <input type="checkbox" name="permissions[]" value="RegistrarPersonal" {{ $role->hasPermissionTo('RegistrarPersonal') ? 'checked' : '' }}>
+                          </label>
+                        </div>
+                      </td>
+                      <td>
+                        Editar Personal</br>
+                        <div class="checkbox icheck">
+                          <label>
+                            <input type="checkbox" name="permissions[]" value="EditarPersonal" {{ $role->hasPermissionTo('EditarPersonal') ? 'checked' : '' }}>
+                          </label>
+                        </div>
+                      </td>
+                      </tr>
                    </tr>  
                   </table>
                   <div class="form-group pading">
@@ -136,7 +226,7 @@
                      <input type="password" class="form-control" id="current_password" name="current_password" placeholder="Contraseña actual">
                      <span class="missing_alert text-danger" id="current_password_alert"></span>
                     </div>
-                    <button type="submit" class="btn blue darken-4 text-white ajax" id="submit">
+                    <button type="submit" class="btn blue darken-4 text-white ajax form-control" id="submit">
                       <i id="ajax-icon" class="fa fa-edit"></i> Editar
                     </button>
               </form>

@@ -42,7 +42,7 @@
               @foreach ($logins as $login)
               <tr class="row{{ $login->id }}">
               <td>{{ $login->id }}</td>
-              <td>{{ $login->user->full_name }}</td>
+              <td>{{ $login->user->display_name }}</td>
               <td>{{ $login->login_at  }}</td>
               <td>{{ $login->logout_at }}</td>
               <td>{{ $login->ip_address }}</td>

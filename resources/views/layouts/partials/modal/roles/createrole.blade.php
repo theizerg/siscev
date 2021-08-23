@@ -16,7 +16,7 @@
                  <div class="col-sm-12">
                    <div class="form-group pading">
                    <label class="font-weight-bolder" for="name">Nombre</label>
-                  <input class="form-control" style="font-size: 15px;" id="name" name="name" placeholder="Nombres">
+                  <input class="form-control" required style="font-size: 15px;" id="name" name="name" placeholder="Nombres">
                   <span class="missing_alert text-danger" id="name_alert"></span>
               </div>
                 </div> 
@@ -27,7 +27,7 @@
              
             </div>
               <div class="card-footer">
-                <button type="submit" class="btn blue darken-4 text-white  ajax" id="submit">
+                <button type="submit" class="btn blue darken-4 text-white  ajax form-control" id="submit">
                   <i id="ajax-icon" class="fa fa-save"></i> Ingresar
                 </button>
                
