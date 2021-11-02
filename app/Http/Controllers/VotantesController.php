@@ -21,6 +21,34 @@ class VotantesController extends Controller
        return view ('admin.votantes.index', compact('votantes'));
     }
 
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listado()
+    {
+       $votantes = Votantes::where('confirmed',1)
+       ->get();
+
+       return view ('admin.votantes.listado', compact('votantes'));
+    }
+
+     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function noejercidos()
+    {
+       $votantes = Votantes::where('confirmed',0)
+       ->get();
+       //dd($votantes);
+
+       return view ('admin.votantes.novotos', compact('votantes'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

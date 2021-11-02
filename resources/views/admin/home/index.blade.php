@@ -142,6 +142,7 @@
                         Bsucar gerencia
                     </button>
                 </div>
+                 {!! Form::close() !!}
                 </div>
               </div>
             </div>

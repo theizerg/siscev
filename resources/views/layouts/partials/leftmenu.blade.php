@@ -89,6 +89,22 @@
               </a>
           </li>
           @endcan
+            @can('VerVotante')
+           <li class="nav-item has-treeview ">
+             <a href="/votaciones/listado" class="nav-link">
+                  <i class="fas fa-check nav-icon"></i>
+                  <p>Votos ejercidos</p>
+              </a>
+          </li>
+          @endcan
+          @can('VerVotante')
+           <li class="nav-item has-treeview ">
+             <a href="/votaciones/listado/noejercidos" class="nav-link">
+                  <i class="fas fa-closed-captioning nav-icon"></i>
+                  <p>Votos no ejercidos</p>
+              </a>
+          </li>
+          @endcan
         </li>
       </ul>
     </nav>

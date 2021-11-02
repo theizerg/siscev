@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', 'Votos')
+@section('title', 'Votos no Ejercidos')
 @section('content')
 <div class="container">
   <div class="row">
@@ -23,67 +23,34 @@
             </li>
           </ul><br>
           <div class="row">
-              <div class="col-md-4">
-                <legend>Datos del votante</legend>
-                <form method="POST" action="{{ route('votantes.store') }}" id="main-form">
-                  {{ csrf_field() }}
-                  <div class="form-group">
-                    <label>Gerencia</label>
-                    <select id="gerencias" class="form-control select2" name="gerencia_id" required>
-                      @php
-                      $gerencias =  App\Models\Gerencias::get()
-                      @endphp
-                       <option value="0">Seleccione una gerencia</option>
-                      @foreach ($gerencias as $gerencia)
-                      <option value="{{ $gerencia->id }}">{{ $gerencia->descricion }}</option>
-                     @endforeach
-                    </select>
-                  </div>
-                  <div class="form-group">
-                    <label>Funcionario</label>
-                    <select id="persona_id" class="form-control select2" name="personal_id" required >
-                    </select>
-                  </div>
-                   <div class="form-group">
-                <label class="font-weight-bolder text-center" for="status">¿Ejerció su derecho al voto?</label>
-                <div class="checkbox icheck text-center">
-                  <label class="font-weight-bolder">
-                    <input type="radio" name="confirmed" value="1" checked> SÍ&nbsp;&nbsp;
-                    <input type="radio" name="confirmed" value="0"> NO
-                  </label>
-                </div>
-              </div>
-                  <div class="form-group form-persona form-empresa" >
-                    <button type="submit" class="btn btn-block green darken-3 text-white">Guardar</button>
-                  </div>
-                </form>
-              </div>
-              <div class="col-md-8"><br> 
+              
+              <div class="col-md-12"><br> 
                 <div class="table-responsive">
                   <table id="tableExport" class="table table-striped table-bordered">
                     <thead>
                       <tr>
-                        <th>Nombre completo del funcionario</th>
-                        <th>Gerencia del funcionario</th>
-                        <th>¿El funcionario ejerció el voto?</th>
-                        <th>Fecha de registro</th>
+                        <th>Gerencia </th>
+                        <th>Funcionarios que ejercieron el voto </th>
+                        
+                        
                       </tr>                             
                     </thead>
                     <tbody>
-                      @foreach($votantes->sortByDesc('created_at') as $c)
+                      @foreach($votantes as $c)
                         <tr>
                           <td>
-                              {{ $c->personal->tx_nombres }} {{ $c->personal->tx_apellidos }}
+                              {{ $c->gerencia->descricion }}
                           </td>
-                          <td>
-                             {{ $c->gerencia->descricion }}
+                          @if ($c->confirmed == 0)
+                            <td>
+                             {{ $c->where('confirmed',0)->count() }}
                           </td>
-                         <td><h2 class="badge text-white {{ $c->confirmed ? 'badge-success' : 'badge-danger' }}">{{ $c->display_status }}</h2></td>
-                          @if($c->created_at != null)
-                            <td>{{ date_format( $c->created_at, 'd/m/Y H:i:s' ) }}</td>
                           @else
-                            <td></td>
+                          <td>{{ $c->where('confirmed',1)
+                          ->where('gerencia_id',$c->gerencia_id)
+                          ->count() }}</td>
                           @endif
+                         
                         </tr>
                       @endforeach
                     </tbody>
