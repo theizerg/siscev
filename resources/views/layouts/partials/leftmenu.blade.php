@@ -89,7 +89,7 @@
               </a>
           </li>
           @endcan
-            @can('VerVotante')
+            @can('VerVotantes')
            <li class="nav-item has-treeview ">
              <a href="/votaciones/listado" class="nav-link">
                   <i class="fas fa-check nav-icon"></i>
@@ -97,7 +97,7 @@
               </a>
           </li>
           @endcan
-          @can('VerVotante')
+          @can('VerVotantes')
            <li class="nav-item has-treeview ">
              <a href="/votaciones/listado/noejercidos" class="nav-link">
                   <i class="fas fa-closed-captioning nav-icon"></i>

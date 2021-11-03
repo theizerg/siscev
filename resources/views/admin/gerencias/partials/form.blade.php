@@ -9,7 +9,7 @@
          <div class="col-sm-6">
          <div class="form-group">
           <label>Nombre de la gerencia</label>
-            {{ Form:: text('descricion',null,['class'=>'form-control','placeholder' => 'Nombre de la gerencia','id'=>'descricion']) }}
+            {{ Form:: text('descricion',null,['class'=>'form-control','placeholder' => 'Nombre de la gerencia']) }}
             
           </div>
        </div> 
@@ -19,4 +19,5 @@
               Guardar gerencia
           </button>
       </div>
+ </div>
  

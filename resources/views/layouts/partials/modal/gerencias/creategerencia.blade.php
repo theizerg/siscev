@@ -13,7 +13,9 @@
 
                     @include('admin.gerencias.partials.form')
 
+
                      {!! Form::close()!!}
+                    
               </div>
             
             

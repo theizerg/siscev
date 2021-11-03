@@ -116,11 +116,11 @@
             <section class="content container-fluid">
             <!--Page Content Here -->
             @yield('content')
-             @include('layouts.partials.modal.personal.createpersonal')
+            
             @include('layouts.partials.modal.usuario.createmodal')
             @include('layouts.partials.modal.roles.createrole')
             @include('layouts.partials.modal.gerencias.creategerencia')
-           
+            @include('layouts.partials.modal.personal.createpersonal')
             </section>
         </div>
 

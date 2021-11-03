@@ -72,7 +72,7 @@
               <!-- small box -->
               <div class="small-box green darken-3 text-white">
                 <div class="inner">
-                  <h3>{{ App\Models\Personal::count() }}</h3>
+                  <h3>{{ App\Models\Personal::where('ente_id',1)->count() }}</h3>
 
                   <p>FUNCIONARIOS </p>
                 </div>
@@ -86,7 +86,7 @@
               <!-- small box -->
               <div class="small-box green darken-3 text-white">
                 <div class="inner">
-                  <h3>{{ App\Models\Gerencias::count() }}</h3>
+                  <h3>{{ App\Models\Gerencias::where('ente_id',1)->count() }}</h3>
 
                   <p>GERENCIAS </p>
                 </div>
