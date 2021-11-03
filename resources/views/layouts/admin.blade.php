@@ -1,3 +1,4 @@
+<html>
  <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -115,14 +116,15 @@
             <section class="content container-fluid">
             <!--Page Content Here -->
             @yield('content')
+             @include('layouts.partials.modal.personal.createpersonal')
             @include('layouts.partials.modal.usuario.createmodal')
             @include('layouts.partials.modal.roles.createrole')
             @include('layouts.partials.modal.gerencias.creategerencia')
-            @include('layouts.partials.modal.personal.createpersonal')
+           
             </section>
         </div>
 
-        <br><br><br><br><br>
+        
 
         <!-- Main Footer -->
         <footer class="main-footer">

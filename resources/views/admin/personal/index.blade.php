@@ -34,6 +34,7 @@
                     <th>#</th>
                     <th>Empleado</th>
                     <th>Cédula</th>
+                    <th>Ente</th>
                     <th>Gerencia</th>
                     <th>Estado del empleado</th>
                     <th>Fecha de registro</th>
@@ -46,6 +47,7 @@
                     <td>{{ $personal->id }}</td>
                     <td>{{ $personal->display_name }}</td>
                     <td>{{ $personal->cedula }}</td>
+                    <td>{{ $personal->ente->descripcion }}</td>
                     <td>{{ $personal->gerencia->descricion }}</td>
                    
                      <td><span class="badge text-white {{ $personal->status ? 'badge-success' : 'badge-danger' }}">{{ $personal->display_status }}</span></td>

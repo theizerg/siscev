@@ -31,7 +31,9 @@ Route::middleware(['auth',])->group(function () {
   Route::resource('votantes',   'VotantesController');
   Route::get('/resultado/votantes',   'VotantesController@resultado');
   Route::post('/resultado/votantes',   'VotantesController@votante');
-  Route::get('/votantes/{gerencia_id}/personal',   'VotantesController@personal');
+  //Route::get('/votantes/{gerencia_id}/personal',   'VotantesController@personal');
+  Route::get('/votantes/{ente_id}/gerencia',   'VotantesController@gerencia');
+  Route::get('/ente/{gerencia_id}/personal',   'VotantesController@personal');
   Route::get('/votaciones/listado',   'VotantesController@listado');
   Route::get('/votaciones/listado/noejercidos',   'VotantesController@noejercidos');
 

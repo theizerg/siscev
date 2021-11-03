@@ -22,6 +22,7 @@ class CreatePersonalsTable extends Migration
             $table->string('fecha_emisison')->default(date('d/m/Y'));
             $table->foreignId('gerencia_id')->references('id')->on('gerencias');
             $table->foreignId('usuario_id')->references('id')->on('users')->default(1);
+            $table->foreignId('ente_id')->references('id')->on('entes');
             $table->timestamps();
         });
     }

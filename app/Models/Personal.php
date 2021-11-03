@@ -7,7 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Personal extends Model
 {
     
-
+    public function ente()
+    {
+        return $this->belongsTo('App\Models\Ente', 'ente_id');
+    }
 
 
     public function gerencia()

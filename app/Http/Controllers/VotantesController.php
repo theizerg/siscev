@@ -71,6 +71,23 @@ class VotantesController extends Controller
        return $personal;
     }
 
+
+
+   /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    
+    public function gerencia($id)
+    {
+       $gerencias = Gerencias::where('ente_id',$id)->get();
+       return $gerencias;
+    }
+
+
+
+
     public function votante(Request $request)
     {   
           //dd($request);
@@ -100,7 +117,7 @@ class VotantesController extends Controller
      */
     public function store(Request $request)
     {
-       //dd();
+      
         $votante = Votantes::where('personal_id',$request->personal_id)->count();
 
         if ($votante <> 0) {
@@ -115,6 +132,7 @@ class VotantesController extends Controller
         $votos = new Votantes();
 
        $votos->gerencia_id = $request->gerencia_id;
+       $votos->ente_id = $request->ente_id;
        $votos->personal_id = $request->personal_id;
        $votos->confirmed = $request->confirmed;
 

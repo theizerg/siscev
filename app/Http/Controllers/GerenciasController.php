@@ -38,9 +38,9 @@ class GerenciasController extends Controller
     {
         $gerencia =new Gerencias();
 
-        $gerencia->codigo_nomina = $request->codigo_nomina;
+        $gerencia->ente_id = $request->ente_id;
         $gerencia->descricion = $request->descricion;
-        $gerencia->fecha_registro = $request->fecha_registro;
+       
 
         $gerencia->save();
 
@@ -92,9 +92,9 @@ class GerenciasController extends Controller
         $gerencia = Gerencias::find($id);
         //dd($gerencia);
 
-        $gerencia->codigo_nomina = $request->codigo_nomina;
+        $gerencia->ente_id = $request->ente_id;
         $gerencia->descricion = $request->descricion;
-        $gerencia->fecha_registro = $request->fecha_registro;
+       
 
         $gerencia->save();
 

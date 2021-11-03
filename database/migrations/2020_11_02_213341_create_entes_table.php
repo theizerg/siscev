@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGerenciasTable extends Migration
+class CreateEntesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateGerenciasTable extends Migration
      */
     public function up()
     {
-        Schema::create('gerencias', function (Blueprint $table) {
+        Schema::create('entes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descricion');
-            $table->foreignId('ente_id')->references('id')->on('entes');
+            $table->string('descripcion');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateGerenciasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gerencias');
+        Schema::dropIfExists('entes');
     }
 }

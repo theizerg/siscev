@@ -32,6 +32,7 @@
                     <thead>
                     <tr>
                     <th>#</th>
+                    <th>Ente</th>
                     <th>Descripción</th>
                     <th>Opciones</th> 
                     </tr>
@@ -40,7 +41,7 @@
                     @foreach ($gerencias as $gerencia)
                     <tr class="row{{ $gerencia->id }}">
                     <td>{{ $gerencia->id }}</td>
-                   
+                    <td>{{ $gerencia->entes->descripcion }}</td>
                     <td>{{ $gerencia->descricion }}</td>
                    
                     <td>

@@ -35,15 +35,15 @@ class PersonalController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  // dd($request);
+    {   //dd($request);
         $personal = new Personal();
 
         $personal->tx_nombres = $request->tx_nombres;
         $personal->tx_apellidos = $request->tx_apellidos;
         $personal->cedula = $request->cedula;
         $personal->status = $request->status_id;
-        //$personal->fecha_emision =date('d/m/Y');
-        $personal->gerencia_id = $request->estado_id;
+        $personal->ente_id =$request->ente_id;
+        $personal->gerencia_id = $request->gerencia_id;
         $personal->usuario_id = \Auth::user()->id;
 
         $personal->save();
@@ -95,8 +95,8 @@ class PersonalController extends Controller
         $personal->tx_apellidos = $request->tx_apellidos;
         $personal->cedula = $request->cedula;
         $personal->status = $request->status_id;
-        //$personal->fecha_emision =date('d/m/Y');
-        $personal->gerencia_id = $request->estado_id;
+        $personal->ente_id =$request->ente_id;
+        $personal->gerencia_id = $request->gerencia_id;
         $personal->usuario_id = \Auth::user()->id;
 
         $personal->save();

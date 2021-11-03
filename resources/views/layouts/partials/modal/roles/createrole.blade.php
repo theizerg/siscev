@@ -25,7 +25,7 @@
               </div>
               
              
-            </div>
+           
               <div class="card-footer">
                 <button type="submit" class="btn blue darken-4 text-white  ajax form-control" id="submit">
                   <i id="ajax-icon" class="fa fa-save"></i> Ingresar

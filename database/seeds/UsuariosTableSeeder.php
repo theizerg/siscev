@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use App\Models\Gerencias;
+use App\Models\Ente;
 
 class UsuariosTableSeeder extends Seeder
 {
@@ -13,6 +14,11 @@ class UsuariosTableSeeder extends Seeder
      */
     public function run()
     {
+        
+
+
+
+
         $user = new User;
         $user->name     = 'Admin';
         $user->username = 'laradmin';
@@ -41,74 +47,100 @@ class UsuariosTableSeeder extends Seeder
 
 
 
+        $ente = new Ente();
+        $ente->descripcion     = 'BANDES';
+        $ente->save();
+
+
+        $ente = new Ente();
+        $ente->descripcion     = 'CORPOVEX';
+        $ente->save();
+
+
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'GESTION DEL TALENTO HUMANO';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'ADMINISTRACION';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'TECNOLOGIA DE LA INFORMACION';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'RESGUARDO INSTITUCIONAL';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'COOP Y FINANC  NACIONAL';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'ADMINISTRACION DE FONDOS';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'AUDITORIA INTERNA';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'FINANZAS';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'PRESIDENCIA';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'INFOR Y RELACIONES PUBLICAS';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'FONDOS PARA EL DESARROLLO';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'PLANIFI Y GESTION ESTRATEGICA';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'PREINVERSION Y ASISTENCIA TECNICA';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'VICEPRESIDENCIA EJECUTIVA';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'SECRETARIA DE LA PRESIDENCIA';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
         $gerencia = new Gerencias;
         $gerencia->descricion     = 'COOP Y FINANC INTERNACIONAL';
+        $gerencia->ente_id =1;
         $gerencia->save();
 
 

@@ -1,6 +1,9 @@
 @extends('layouts.admin')
 @section('title', 'Votos')
 @section('content')
+ @php
+                      $gerencias =  App\Models\Gerencias::get()
+                      @endphp
 <div class="container">
   <div class="row">
     <div class="col-md-12">
@@ -25,20 +28,28 @@
           <div class="row">
               <div class="col-md-4">
                 <legend>Datos del votante</legend>
-                <form method="POST" action="{{ route('votantes.store') }}" id="main-form">
-                  {{ csrf_field() }}
-                  <div class="form-group">
-                    <label>Gerencia</label>
-                    <select id="gerencias" class="form-control select2" name="gerencia_id" required>
-                      @php
-                      $gerencias =  App\Models\Gerencias::get()
-                      @endphp
-                       <option value="0">Seleccione una gerencia</option>
-                      @foreach ($gerencias as $gerencia)
-                      <option value="{{ $gerencia->id }}">{{ $gerencia->descricion }}</option>
-                     @endforeach
-                    </select>
+                {!! Form::open(['route' => ['votantes.store'],'method' => 'POST','id'=>'votantes_form']) !!}
+                  
+                   <div class="form-group">
+           
+                    <label>Ente del empleado</label>
+                     
+                  @php
+                    $entes = App\Models\Ente::pluck('descripcion', 'id')
+                  @endphp
+                     {!! Form::select('ente_id', $entes, null,array('class' => 'form-control input-sm select2 ente_form','placeholder'=>'Selecione el ente ','data-width'=>'100%')) !!}    
+               
                   </div>
+                   <div class="form-group">
+                     
+                    <label>Gerencia del empleado</label>
+                     
+                 
+                     <select name="gerencia_id"  class="form-control input-sm select2 gerencia_form">
+                        
+                     </select>  
+               
+                    </div>
                   <div class="form-group">
                     <label>Funcionario</label>
                     <select id="persona_id" class="form-control select2" name="personal_id" required >
@@ -56,7 +67,7 @@
                   <div class="form-group form-persona form-empresa" >
                     <button type="submit" class="btn btn-block green darken-3 text-white">Guardar</button>
                   </div>
-                </form>
+                {!! Form::close()!!}
               </div>
               <div class="col-md-8"><br> 
                 <div class="table-responsive">
@@ -64,6 +75,7 @@
                     <thead>
                       <tr>
                         <th>Nombre completo del funcionario</th>
+                        <th>Ente</th>
                         <th>Gerencia del funcionario</th>
                         <th>¿El funcionario ejerció el voto?</th>
                         <th>Fecha de registro</th>
@@ -75,6 +87,7 @@
                           <td>
                               {{ $c->personal->tx_nombres }} {{ $c->personal->tx_apellidos }}
                           </td>
+                          <td>{{ $c->ente->descripcion }}</td>
                           <td>
                              {{ $c->gerencia->descricion }}
                           </td>
@@ -100,14 +113,26 @@
 @endsection
 
 @push('scripts')
-  <script type="text/javascript">
+
+<script>
+      $(function () {
+        $('input').iCheck({
+          checkboxClass: 'icheckbox_square-blue',
+          radioClass: 'iradio_square-blue',
+          increaseArea: '20%' // optional
+        });
+      });
+    </script>
+
+
+ <script type="text/javascript">
 
    var form    = false;
 
 
 $(document).ready(function() {
 
-  form = $('#main-form');
+  form = $('#personal_form');
      
     $.fn.eventos();
 
@@ -123,15 +148,15 @@ $.fn.eventos = function(){
 
 
   
-  $('#gerencias').on("change", function(e) { //asigno el evento change u otro
+  $('.ente_form').on("change", function(e) { //asigno el evento change u otro
    
-    gerencias = e.target.value;
-    console.log(gerencias);
-    if(gerencias != '0')
+    ente_form = e.target.value;
+    console.log(ente_form);
+    if(ente_form != '0')
     {
 
-      $.fn.get_municipio(gerencias);
-      $("persona_id").removeAttr('disabled');
+      $.fn.get_municipio(ente_form);
+      $(".gerencia_form").removeAttr('disabled');
 
      
     }else{
@@ -144,15 +169,62 @@ $.fn.eventos = function(){
 
 /********* AJAX ***********/
 
-$.fn.get_municipio = function(gerencias){
+$.fn.get_municipio = function(ente_form){
 
-      $.ajax({url: "/votantes/"+gerencias+"/personal",
+      $.ajax({url: "/votantes/"+ente_form+"/gerencia",
         method: 'GET',
         //data: {'gerencias': estados_id}
       }).then(function(result) {
         console.log(result);
           
-        $('#persona_id').html('<option value="0"> Seleccione el funcionario </option>');
+        $('.gerencia_form').html('<option value="0"> Seleccione la gerencia del funcionario </option>');
+        
+
+        $(result).each(function( index, element ) {
+          console.log(element.descricion);
+          $('.gerencia_form').append('<option value="'+ element.id +'">'+ element.descricion +' </option>');
+      
+        });
+      })
+      .catch(function(err) {
+          console.error(err);
+      });
+
+}
+
+
+
+
+  
+  $('.gerencia_form').on("change", function(e) { //asigno el evento change u otro
+   
+    gerencia_form = e.target.value;
+    console.log(gerencia_form);
+    if(gerencia_form != '0')
+    {
+
+      $.fn.get_empleados(gerencia_form);
+      $(".gerencia_form").removeAttr('disabled');
+
+     
+    }else{
+      console.log('epa selecciona un proyecto valido');
+    }
+
+  });
+  
+
+  /********* AJAX ***********/
+
+$.fn.get_empleados = function(gerencia_form){
+
+      $.ajax({url: "/ente/"+gerencia_form+"/personal",
+        method: 'GET',
+        //data: {'gerencias': estados_id}
+      }).then(function(result) {
+        console.log(result);
+          
+         $('#persona_id').html('<option value="0"> Seleccione el funcionario </option>');
         
 
         $(result).each(function( index, element ) {
@@ -167,16 +239,10 @@ $.fn.get_municipio = function(gerencias){
 
 }
 
+
+
+
  
 
   </script>
-<script>
-      $(function () {
-        $('input').iCheck({
-          checkboxClass: 'icheckbox_square-blue',
-          radioClass: 'iradio_square-blue',
-          increaseArea: '20%' // optional
-        });
-      });
-    </script>
 @endpush
