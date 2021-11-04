@@ -229,7 +229,7 @@ $.fn.get_empleados = function(gerencia_form){
 
         $(result).each(function( index, element ) {
           console.log(element.tx_nombres);
-          $('#persona_id').append('<option value="'+ element.id +'">'+ element.tx_nombres +' '+ element.tx_apellidos + '</option>');
+          $('#persona_id').append('<option value="'+ element.id +'">'+ element.cedula +' | '+ element.tx_nombres +' '+'</option>');
       
         });
       })

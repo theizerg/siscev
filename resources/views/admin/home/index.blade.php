@@ -66,7 +66,7 @@
 @else 
 
        <div class="container">
-          <!-- Small boxes (Stat box) -->
+          <h2 class="">Personal de Bandes</h2>
           <div class="row">
             <div class="col-lg-6 col-6">
               <!-- small box -->
@@ -100,7 +100,7 @@
               <!-- small box -->
               <div class="small-box green darken-4 text-white">
                 <div class="inner">
-                  <h3>{{ App\Models\Votantes::where('confirmed',1)->count() }}</h3>
+                  <h3>{{ App\Models\Votantes::where('confirmed',1)->where('ente_id',1)->count() }}</h3>
 
                   <p>FUNCIONARIOS QUE EJERCIERON EL VOTO</p>
                 </div>
@@ -114,7 +114,7 @@
               <!-- small box -->
               <div class="small-box green darken-4 text-white">
                 <div class="inner">
-                  <h3>{{ App\Models\Votantes::where('confirmed',0)->count() }}</h3>
+                  <h3>{{ App\Models\Votantes::where('confirmed',0)->where('ente_id',1)->count() }}</h3>
 
                   <p>FUNCIONARIOS QUE NO EJERCIERON EL VOTO</p>
                 </div>
@@ -124,6 +124,66 @@
                 <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
+            <h2>Personal de Corpovex</h2>
+          <div class="row">
+
+            <div class="col-lg-6 col-6">
+              <!-- small box -->
+              <div class="small-box green darken-3 text-white">
+                <div class="inner">
+                  <h3>{{ App\Models\Personal::where('ente_id',2)->count() }}</h3>
+
+                  <p>FUNCIONARIOS </p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-user-tie"></i>
+                </div>
+                <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-6">
+              <!-- small box -->
+              <div class="small-box green darken-3 text-white">
+                <div class="inner">
+                  <h3>{{ App\Models\Gerencias::where('ente_id',2)->count() }}</h3>
+
+                  <p>GERENCIAS </p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-building"></i>
+                </div>
+                <a href="/gerencias" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-6">
+              <!-- small box -->
+              <div class="small-box green darken-4 text-white">
+                <div class="inner">
+                  <h3>{{ App\Models\Votantes::where('confirmed',1)->where('ente_id',1)->count() }}</h3>
+
+                  <p>FUNCIONARIOS QUE EJERCIERON EL VOTO</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-check"></i>
+                </div>
+                <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+            <div class="col-lg-6 col-6">
+              <!-- small box -->
+              <div class="small-box green darken-4 text-white">
+                <div class="inner">
+                  <h3>{{ App\Models\Votantes::where('confirmed',0)->where('ente_id',2)->count() }}</h3>
+
+                  <p>FUNCIONARIOS QUE NO EJERCIERON EL VOTO</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-not-equal"></i>
+                </div>
+                <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+              </div>
+            </div>
+
             <div class="col-sm-12">
               <div class="card">
                 <div class="card-body">

@@ -45,6 +45,7 @@
                   <div class="card-header text-white text-center">
                     <h4>SISCEV</h4>
                   </div>
+                  
                     <div class="card-body px-lg-5 py-lg-5 text-white  text-center">
                         <i class="mdi mdi-laptop fa-7x"></i>
                         <p class="text-muted text-white">Sistema desarrollado para el control y estadística de votos.</p>
