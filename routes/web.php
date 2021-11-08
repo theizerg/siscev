@@ -37,5 +37,9 @@ Route::middleware(['auth',])->group(function () {
   Route::get('/votaciones/listado',   'VotantesController@listado');
   Route::get('/votaciones/listado/noejercidos',   'VotantesController@noejercidos');
 
+  Route::get('/resultados/{ente_id}',   'HomeController@resultados');
+  Route::get('/resultados/votaciones/{ente_id}',   'HomeController@votaciones');
+
+
 
 });

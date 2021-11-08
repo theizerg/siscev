@@ -59,14 +59,13 @@
           </div>
     </div>
 
-    
-</div>
-      
+         
+
    
 @else 
 
-       <div class="container">
-          <h2 class="">Personal de Bandes</h2>
+
+     <h2 class="">Personal de Bandes</h2>
           <div class="row">
             <div class="col-lg-6 col-6">
               <!-- small box -->
@@ -79,7 +78,7 @@
                 <div class="icon">
                   <i class="fas fa-user-tie"></i>
                 </div>
-                <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+               
               </div>
             </div>
             <div class="col-lg-6 col-6">
@@ -93,7 +92,7 @@
                 <div class="icon">
                   <i class="fas fa-building"></i>
                 </div>
-                <a href="/gerencias" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+               
               </div>
             </div>
             <div class="col-lg-6 col-6">
@@ -107,7 +106,7 @@
                 <div class="icon">
                   <i class="fas fa-check"></i>
                 </div>
-                <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+               
               </div>
             </div>
             <div class="col-lg-6 col-6">
@@ -121,13 +120,14 @@
                 <div class="icon">
                   <i class="fas fa-not-equal"></i>
                 </div>
-                <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+               
               </div>
             </div>
-            <h2>Personal de Corpovex</h2>
-          <div class="row">
-
-            <div class="col-lg-6 col-6">
+            
+           </div>
+            <h2 class="">Personal de Corpovex</h2>
+            <div class="row">
+               <div class="col-lg-6 col-6">
               <!-- small box -->
               <div class="small-box green darken-3 text-white">
                 <div class="inner">
@@ -138,35 +138,35 @@
                 <div class="icon">
                   <i class="fas fa-user-tie"></i>
                 </div>
-                <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+               
               </div>
             </div>
-            <div class="col-lg-6 col-6">
+             <div class="col-lg-6 col-6">
               <!-- small box -->
               <div class="small-box green darken-3 text-white">
                 <div class="inner">
-                  <h3>{{ App\Models\Gerencias::where('ente_id',2)->count() }}</h3>
+                  <h3>{{ App\Models\Gerencias::where('ente_id',1)->count() }}</h3>
 
                   <p>GERENCIAS </p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-building"></i>
                 </div>
-                <a href="/gerencias" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+               
               </div>
             </div>
             <div class="col-lg-6 col-6">
               <!-- small box -->
               <div class="small-box green darken-4 text-white">
                 <div class="inner">
-                  <h3>{{ App\Models\Votantes::where('confirmed',1)->where('ente_id',1)->count() }}</h3>
+                  <h3>{{ App\Models\Votantes::where('confirmed',1)->where('ente_id',2)->count() }}</h3>
 
                   <p>FUNCIONARIOS QUE EJERCIERON EL VOTO</p>
                 </div>
                 <div class="icon">
                   <i class="fas fa-check"></i>
                 </div>
-                <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+               
               </div>
             </div>
             <div class="col-lg-6 col-6">
@@ -180,57 +180,16 @@
                 <div class="icon">
                   <i class="fas fa-not-equal"></i>
                 </div>
-                <a href="/personal" class="small-box-footer">Más información <i class="fas fa-arrow-circle-right"></i></a>
+               
               </div>
             </div>
-
-            <div class="col-sm-12">
-              <div class="card">
-                <div class="card-body">
-                   @php
-                    $gerencias = App\Models\Gerencias::pluck('descricion','id');
-                  @endphp
-                {!! Form::open(['url' => ['/resultado/votantes'],'method' => 'POST','id'=>'marca']) !!}
-                 <div class="row">
-                   <div class="col-sm-12">
-                    <label for="">Buscar resultados por gerencia</label>
-                      {!! Form::select('estado_id', $gerencias, null,array('class' => 'form-control input-sm select2','placeholder'=>'Selecione una gerencia','data-width'=>'100%','id'=>'gerencias' ,'required')) !!}  
-                   </div>
-                 </div>
-                 <div class="col-sm-12 mt-5">
-                    <button type="submit" class="btn blue darken-4 form-control text-white">
-                        Bsucar gerencia
-                    </button>
-                </div>
-                 {!! Form::close() !!}
-                </div>
-              </div>
+          
             </div>
-            <div class="col-sm-6">
-             <di class="card">
-               <div class="card-header">
-                 <h4>Porcentaje de votos generales</h4>
-               </div>
-               <div class="card-body">
-                  <div  id="chart7" style="width:100%; min-height:300px;"></div>
-               </div>
-             </di>
-             
-            </div>
-             <div class="col-sm-6">
-             <div class="card">
-               <div class="card-header">
-                 <h4>Porcentaje de votos por gerencia</h4>
-               </div>
-              <div class="card-body">
-                  <div  id="chart9" style="width:100%; min-height:300px;"></div>
-               </div>
-             </div>
-             
-            </div>
+            
             <!-- /.card -->
           </div>
           
+
 
   
 @endif

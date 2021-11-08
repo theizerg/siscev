@@ -1,6 +1,6 @@
  <!-- Brand Logo -->
     <a href="{{url ('/') }}" class="brand-link">
-      <img src="{{ asset('images/logo/logo-login.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="{{ asset('images/logo/logo-login.png') }}" alt="AdminLTE Logo" class="brand-image"
            style="opacity: .8">
       <span class="brand-text font-weight-light">SISCEV</span>
     </a>
@@ -105,7 +105,53 @@
               </a>
           </li>
           @endcan
+
         </li>
+        <li class="nav-item has-treeview menu-open">
+        <a href="#" class="nav-link active">
+          <i class="nav-icon fas fa-cogs"></i>
+          <p>
+            Resultados
+            <i class="right fas fa-angle-left"></i>
+          </p>
+        </a>
+        <ul class="nav nav-treeview ">
+          
+           <li class="nav-item has-treeview menu-open">
+            
+                <a href="/resultados/2" class="nav-link">
+                  <i class="fas fa-user nav-icon"></i>
+                  <p>GENERAL CORPOVEX</p>
+                </a>
+          </li>
+
+          <li class="nav-item has-treeview menu-open">
+            
+                <a href="/resultados/1" class="nav-link">
+                  <i class="fas fa-user nav-icon"></i>
+                  <p>GENERAL BANDES</p>
+                </a>
+          </li>
+
+          <li class="nav-item has-treeview menu-open">
+            
+                <a href="/resultados/votaciones/1" class="nav-link">
+                  <i class="fas fa-user nav-icon"></i>
+                  <p>GERENCIAS BANDES</p>
+                </a>
+          </li>
+
+          <li class="nav-item has-treeview menu-open">
+            
+                <a href="/resultados/votaciones/2" class="nav-link">
+                  <i class="fas fa-user nav-icon"></i>
+                  <p>GERENCIAS CORPOVEX</p>
+                </a>
+          </li>
+        
+        </ul>
+      </li>
       </ul>
+
     </nav>
   </div>

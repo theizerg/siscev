@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Log\LogSistema;
 use App\Models\User;
+use App\Models\Votantes;
+use App\Models\Gerencias;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -69,4 +71,84 @@ class HomeController extends Controller
      private function getPrevDate($num){
         return Carbon::now()->subMonths($num)->toDateTimeString();
     }
+
+
+
+
+     /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function resultados($id)
+    {  
+
+       if ($id == 1) {
+           
+        $voto  = Votantes::where('ente_id',$id)
+        ->where('confirmed',1)
+        ->count();
+
+        $novoto  = Votantes::where('ente_id',$id)
+        ->where('confirmed',0)
+        ->count();
+       
+       return view('admin.home.resultados',compact('voto','novoto','id'));
+
+       }
+       else
+       {
+         $voto  = Votantes::where('ente_id',$id)
+        ->where('confirmed',1)
+        ->count();
+
+        $novoto  = Votantes::where('ente_id',$id)
+        ->where('confirmed',0)
+        ->count();
+       
+       return view('admin.home.resultados',compact('voto','novoto','id'));
+       }
+
+
+       
+
+    }
+
+     /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function votaciones($id)
+    {  
+        //dd($id);
+       if ($id == 1) {
+           
+         $gerencias  = Gerencias::where('ente_id',$id)->get();
+        
+
+      
+       return view('admin.home.votaciones',compact('gerencias','id'));
+
+       }
+       else
+       {
+        $gerencias  = Gerencias::where('ente_id',$id)->get();
+        
+
+      
+       return view('admin.home.votaciones',compact('gerencias','id'));
+       }
+
+
+       
+
+    }
+
+
+
+
+
+
+
 }

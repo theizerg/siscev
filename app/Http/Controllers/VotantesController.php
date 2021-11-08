@@ -90,21 +90,49 @@ class VotantesController extends Controller
 
     public function votante(Request $request)
     {   
-          //dd($request);
+        //  dd($request);
 
-           $voto = Votantes::where('gerencia_id',$request->estado_id)
+           if ($request->ente_id == 1)  {
+               
+            $voto = Votantes::where('gerencia_id',$request->estado_id)
            ->where('confirmed',1)
+            ->where('ente_id', $request->ente_id)
            ->count();
 
             $Novoto = Votantes::where('gerencia_id',$request->estado_id)
            ->where('confirmed',0)
+            ->where('ente_id', $request->ente_id)
            ->count();
             
-           $gerencia = Gerencias::find($request->estado_id);
+           $gerencia = Gerencias::where('ente_id', $request->ente_id)
+           ->find($request->estado_id);
+            //dd($gerencia);
            $descripcion = $gerencia->descricion;
 
           
            return view('admin.votantes.resultados',compact('voto','Novoto','descripcion'));
+           }
+           else
+           {
+
+             $voto = Votantes::where('gerencia_id',$request->estado_id)
+             ->where('ente_id', $request->ente_id)
+           ->where('confirmed',1)
+           ->count();
+
+            $Novoto = Votantes::where('gerencia_id',$request->estado_id)
+            ->where('ente_id', $request->ente_id)
+           ->where('confirmed',0)
+           ->count();
+            
+            $gerencia = Gerencias::where('ente_id', $request->ente_id)
+           ->find($request->estado_id);
+          //dd($gerencia);
+           $descripcion = $gerencia->descricion;
+
+          
+           return view('admin.votantes.resultados',compact('voto','Novoto','descripcion'));
+           }
      }
 
 

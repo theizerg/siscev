@@ -125,19 +125,7 @@
         </div>
 
         
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <div class="float-right hidden-xs">
-            {{ env('APP_NAME') }}
-            </div>
-            <strong>Copyright &copy; 2020 <a href="#">{{ env('APP_NAME') }}</a>.</strong> All rights reserved.
-        </footer>
-
-        <!-- Control Sidebar -->
-        <!-- Uncomment this line to activate the control right sidebar menu
-      
-        -->
+       
         </div>
 
         <!-- REQUIRED JS SCRIPTS --> 
