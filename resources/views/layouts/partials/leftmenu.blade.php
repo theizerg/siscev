@@ -119,7 +119,7 @@
           
            <li class="nav-item has-treeview menu-open">
             
-                <a href="/resultados/2" class="nav-link">
+                <a href="{{ url('resultados/2') }}" class="nav-link">
                   <i class="fas fa-user nav-icon"></i>
                   <p>GENERAL CORPOVEX</p>
                 </a>
@@ -127,7 +127,7 @@
 
           <li class="nav-item has-treeview menu-open">
             
-                <a href="/resultados/1" class="nav-link">
+                <a href="{{ url('resultados/1') }}" class="nav-link">
                   <i class="fas fa-user nav-icon"></i>
                   <p>GENERAL BANDES</p>
                 </a>
@@ -135,7 +135,7 @@
 
           <li class="nav-item has-treeview menu-open">
             
-                <a href="/resultados/votaciones/1" class="nav-link">
+                <a href="{{ url('resultados/votaciones/1') }}" class="nav-link">
                   <i class="fas fa-user nav-icon"></i>
                   <p>GERENCIAS BANDES</p>
                 </a>
@@ -143,7 +143,7 @@
 
           <li class="nav-item has-treeview menu-open">
             
-                <a href="/resultados/votaciones/2" class="nav-link">
+                <a href="{{ url('resultados/votaciones/2') }}" class="nav-link">
                   <i class="fas fa-user nav-icon"></i>
                   <p>GERENCIAS CORPOVEX</p>
                 </a>
