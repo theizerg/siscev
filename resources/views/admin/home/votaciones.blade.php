@@ -34,7 +34,7 @@
                  </div>
                  <div class="col-sm-12 mt-5">
                     <button type="submit" class="btn blue darken-4 form-control text-white">
-                        Bsucar gerencia
+                        Buscar
                     </button>
                 </div>
                  {!! Form::close() !!}
