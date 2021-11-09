@@ -2,10 +2,13 @@
   $entes = App\Models\Ente::pluck('descripcion','id')
 @endphp
 <div class="row">
-       <div class="col-sm-6">
+  <div class="col-sm-6">
+    <div class="form-group">
+       
          <label>Ente  de la gerencia</label>
           {!! Form::select('ente_id', $entes, null,array('class' => 'form-control input-sm select2','placeholder'=>'Selecione un ente','data-width'=>'100%')) !!}   
        </div>
+     </div>
          <div class="col-sm-6">
          <div class="form-group">
           <label>Nombre de la gerencia</label>

@@ -70,4 +70,52 @@
   $('[data-toggle="tooltip"]').tooltip()
 })
  </script>
+ <script>
+  $(document).ready(function () {
+  $('#gerencia_form').validate({
+    rules: {
+      descricion: {
+        required: true,
+        
+      },
+      tx_apellidos: {
+        required: true,
+       
+      },
+      cedula: {
+        required: true,
+        number:true
+      },
+       gerencia_id: {
+        required: true
+      },
+      
+      ente_id: {
+        required: true
+      },
+    },
+    messages: { 
+      descricion: {
+        required: "Por favor ingresar el nombre de la gerencia",
+      },
+       ente_id: {
+        required: "Debes seleccionar el ente de la gerencia."
+
+      },
+       
+    },
+    errorElement: 'span',
+    errorPlacement: function (error, element) {
+      error.addClass('invalid-feedback');
+      element.closest('.form-group').append(error);
+    },
+    highlight: function (element, errorClass, validClass) {
+      $(element).addClass('is-invalid');
+    },
+    unhighlight: function (element, errorClass, validClass) {
+      $(element).removeClass('is-invalid');
+    }
+  });
+});
+</script>
 @endpush

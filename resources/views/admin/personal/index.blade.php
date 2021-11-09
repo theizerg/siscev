@@ -104,7 +104,10 @@
        gerencia_id: {
         required: true
       },
-    
+      
+      ente_id: {
+        required: true
+      },
     },
     messages: { 
       tx_nombres: {
@@ -118,7 +121,11 @@
          number: "Por favor ingresar números válidos"
       },
        gerencia_id: {
-        required: "Debes seleccionar las reparaciones."
+        required: "Debes seleccionar la gerencia que pertenece el empleado."
+
+      },
+       ente_id: {
+        required: "Debes seleccionar el ente que pertenece el empleado."
 
       },
        

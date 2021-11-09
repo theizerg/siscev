@@ -24,7 +24,7 @@
         @php
           $entes = App\Models\Ente::pluck('descripcion', 'id')
         @endphp
-           {!! Form::select('ente_id', $entes, null,array('class' => 'form-control input-sm select2 ente_form','placeholder'=>'Selecione el ente ','data-width'=>'100%')) !!}    
+           {!! Form::select('ente_id', $entes, null,array('class' => 'form-control input-sm  ente_form','placeholder'=>'Selecione el ente ','data-width'=>'100%')) !!}    
      
           </div>
            <div class="form-group">
@@ -78,7 +78,7 @@ $(document).ready(function() {
 $.fn.eventos = function(){
 
 
-  
+  $('.ente_form').unbind('change');//borro evento click
   $('.ente_form').on("change", function(e) { //asigno el evento change u otro
    
     ente_form = e.target.value;
@@ -108,7 +108,7 @@ $.fn.get_municipio = function(ente_form){
       }).then(function(result) {
         console.log(result);
           
-        $('.gerencia_form').html('<option value="0"> Seleccione la gerencia del funcionario </option>');
+        $('.gerencia_form').html('<option value=""> Seleccione la gerencia del funcionario </option>');
         
 
         $(result).each(function( index, element ) {

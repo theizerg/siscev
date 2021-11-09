@@ -47,7 +47,7 @@
                       </a>
                     </li>
                   </ul><br>
-                    {!! Form::open(['route' => ['gerencias.store'],'method' => 'POST','id'=>'marca']) !!}
+                    {!! Form::open(['route' => ['gerencias.store'],'method' => 'POST','id'=>'gerencia_form']) !!}
 
                     @include('admin.gerencias.partials.form')
 
