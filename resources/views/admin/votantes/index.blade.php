@@ -177,7 +177,7 @@ $.fn.get_municipio = function(ente_form){
       }).then(function(result) {
         console.log(result);
           
-        $('.gerencia_form').html('<option value="0"> Seleccione la gerencia del funcionario </option>');
+        $('.gerencia_form').html('<option value=""> Seleccione la gerencia del funcionario </option>');
         
 
         $(result).each(function( index, element ) {
@@ -224,7 +224,7 @@ $.fn.get_empleados = function(gerencia_form){
       }).then(function(result) {
         console.log(result);
           
-         $('#persona_id').html('<option value="0"> Seleccione el funcionario </option>');
+         $('#persona_id').html('<option value=""> Seleccione el funcionario </option>');
         
 
         $(result).each(function( index, element ) {
