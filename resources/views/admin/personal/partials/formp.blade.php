@@ -4,7 +4,7 @@
                <div class="col-sm-12">
                  
 
-                 
+                  <input type="hidden" name="personal_id" value="{{ $funcionario->id }}">
                   
                   
                 </div>

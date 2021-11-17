@@ -238,7 +238,8 @@ class PersonalController extends Controller
     public function editar($id)
     {
        $personales = Personal1p10::find($id);
-       $funcionario = $personales->funcionario_id;
+       $funcionario = Personal::where('id',$personales->personal_id)->first();
+      // dd($funcionario);
 
 
         return view('admin.personal.editar',compact('personales','funcionario'));
