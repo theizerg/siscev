@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Personal;
+use App\Models\Personal1p10;
 use Illuminate\Http\Request;
+use App\Models\Estado;
+use App\Models\Municipio;
 
 class PersonalController extends Controller
 {
@@ -63,10 +66,104 @@ class PersonalController extends Controller
      * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function show(Personal $personal)
+    public function guardar(Request $request)
     {
-        //
+
+        $cedula = $request->cedula;
+
+        
+
+        $personal_p = Personal1p10::where('cedula', $cedula)->count();
+        
+
+        if ($personal_p > 0) {
+        
+      
+              $notification = array(
+            'message' => '¡Esta persona ya existe!',
+            'alert-type' => 'error'
+        );
+             return redirect()->back()->with($notification);
+      
+
+
+       
+
+        }
+        else
+        {
+
+      $count= Personal1p10::where('personal_id',$request->personal_id)->count();
+     // dd($count);
+      
+      if ($count > 9) {
+           $notification = array(
+            'message' => '¡Solo se permiten 10 por funcionario!',
+            'alert-type' => 'error'
+        );
+             return redirect()->back()->with($notification);
+      }
+
+        $personal = new Personal1p10();
+
+        $personal->tx_nombres = $request->tx_nombres;
+        $personal->tx_apellidos = $request->tx_apellidos;
+        $personal->cedula = $request->cedula;
+        $personal->telefono = $request->telefono;
+        $personal->centro_electoral = $request->centro_electoral;
+        $personal->fecha_emisison = date('d/m/Y');
+        $personal->personal_id = $request->personal_id;
+        $personal->usuario_id = \Auth::user()->id;
+        $personal->estado_id = $request->estado_id;
+        $personal->municipio_id = $request->municipio_id;
+        $personal->parroquia_id = $request->parroquia_id;
+
+        $personal->save();
+
+         if ($personal) {
+              $notification = array(
+            'message' => '¡Datos ingresados!',
+            'alert-type' => 'success'
+        );
+             return redirect()->back()->with($notification);
+        }
+        }
+
+        
+
     }
+
+     /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function municipios($id)
+    {
+            
+            $estado = Estado::find($id);
+            $municipios = $estado->municipios;
+
+            return \Response::json($municipios);
+
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function parroquias($id)
+    {
+            
+            $municipios = Municipio::find($id);
+            $parroquias = $municipios->parroquias;
+           
+            return \Response::json($parroquias);
+
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -74,9 +171,12 @@ class PersonalController extends Controller
      * @param  \App\Models\Personal  $personal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Personal $personal)
+    public function perosonal1x10($personal)
     {
-        //
+        
+        $funcionario = Personal::find($personal);
+        $personales = Personal1p10::where('personal_id',$funcionario->id)->get();
+        return view('admin.personal.1p10',compact('funcionario','personales')); 
     }
 
     /**

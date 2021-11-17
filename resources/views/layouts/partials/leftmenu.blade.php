@@ -89,6 +89,14 @@
               </a>
           </li>
           @endcan
+           @can('VerVotante')
+           <li class="nav-item has-treeview ">
+             <a href="/votante/1x10" class="nav-link">
+                  <i class="fas fa-check nav-icon"></i>
+                  <p>Control de votos 1x10</p>
+              </a>
+          </li>
+          @endcan
             @can('VerVotantes')
            <li class="nav-item has-treeview ">
              <a href="/votaciones/listado" class="nav-link">

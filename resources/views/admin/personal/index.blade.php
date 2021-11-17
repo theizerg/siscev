@@ -37,13 +37,15 @@
                     <th>Ente</th>
                     <th>Gerencia</th>
                     <th>Estado del empleado</th>
-                    <th>Fecha de registro</th>
+                    
                     <th>Opciones</th> 
                     </tr>
                     </thead>
                     <tbody>
                     @foreach ($personales as $personal)
+                     @include('layouts.partials.modal.personal.create1_10')
                     <tr class="row{{ $personal->id }}">
+                   
                     <td>{{ $personal->id }}</td>
                     <td>{{ $personal->display_name }}</td>
                     <td>{{ $personal->cedula }}</td>
@@ -51,13 +53,16 @@
                     <td>{{ $personal->gerencia->descricion }}</td>
                    
                      <td><span class="badge text-white {{ $personal->status ? 'badge-success' : 'badge-danger' }}">{{ $personal->display_status }}</span></td>
-                    <td> {{date_format(date_create($personal->fecha_emisison), 'd/m/Y' )}} </td>
+                  
                     <td>
                      <a  data-toggle="modal" data-target="#personalModal{{$personal->id}}" class="btn btn-round green darken-3"><i class="mdi mdi-pencil mt-2 text-white" data-toggle="tooltip" data-placement="top"
                       title="Editar datos del empleado."></i></a> 
 
                        <a href="{{ url('/personal/borrar',$personal->id) }}"  class="btn btn-round green darken-3"><i class="mdi mdi-delete mt-2 text-white" data-toggle="tooltip" data-placement="top"
-                      title="Borrar datos del empleado."></i></a>                      
+                      title="Borrar datos del empleado."></i></a>   
+
+                       <a href="{{ ('personal/'.$personal->id.'/1x10') }}" class="btn btn-round red darken-3"><i class="mdi mdi-plus mt-2 text-white" data-toggle="tooltip" data-placement="top"
+                      title="Registrar el 1x10 del empleado."></i></a>                    
                       
                     </td>
                     </tr>

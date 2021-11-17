@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Votantes;
 use App\Models\Personal;
 use App\Models\Gerencias;
+use App\Models\Votante1p10;
+use App\Models\Personal1p10;
 use Illuminate\Http\Request;
 
 class VotantesController extends Controller
@@ -180,10 +182,54 @@ class VotantesController extends Controller
      * @param  \App\Models\Votantes  $votantes
      * @return \Illuminate\Http\Response
      */
-    public function show(Votantes $votantes)
+    public function personal_p(Votantes $votantes)
     {
-        //
+        $votantes = Votante1p10::get();
+        //dd($votantes);
+
+        return view ('admin.votantes.personal_p',compact('votantes'));
     }
+
+
+
+     public function guardar(Request $request)
+    {
+
+
+        $votante = Votante1p10::where('personal_p_id',$request->personal_id)->count();
+       
+
+       if ($votante > 0) {
+            
+             $notification = array(
+            'message' => '¡Persona ya está registrada vuelve a intentarlo!',
+            'alert-type' => 'error'
+        );
+             return redirect()->back()->with($notification);
+        }
+
+        $votante = new Votante1p10();
+
+        
+       //$votante->gerencia_id = $request->gerencia_id;
+       $votante->ente_id = $request->ente_id;
+       $votante->personal_p_id = $request->personal_id;
+       $votante->funcionario_id = $request->funcionario_id;
+       $votante->confirmed = $request->confirmed;
+       $votante->user_id = \Auth::user()->id;
+       $votante->save();
+
+       $notification = array(
+            'message' => '¡Datos ingresados!',
+            'alert-type' => 'success'
+        );
+             return redirect()->back()->with($notification);
+       
+
+    }
+
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -191,9 +237,11 @@ class VotantesController extends Controller
      * @param  \App\Models\Votantes  $votantes
      * @return \Illuminate\Http\Response
      */
-    public function edit(Votantes $votantes)
+    public function personal_p_votacion($votantes)
     {
-        //
+        $votantes = Personal1p10::where('personal_id',$votantes)->get();
+        return $votantes;
+
     }
 
     /**
