@@ -63,8 +63,10 @@ Route::get('/reload-captcha','CatchaController@reloadCaptcha');
 
 
 Route::post('personal/1p10/guardar',   'PersonalController@guardar');
-
 Route::post('/votante/1x10/guardar',   'VotantesController@guardar');
+Route::put('/personal/1p10/guardareditado/{personal_id}',   'PersonalController@guardareditado');
+
+Route::get('/personal/1x10/{votante_id}',   'PersonalController@editar');
 
 
 

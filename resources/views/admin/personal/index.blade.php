@@ -43,7 +43,7 @@
                     </thead>
                     <tbody>
                     @foreach ($personales as $personal)
-                     @include('layouts.partials.modal.personal.create1_10')
+                 
                     <tr class="row{{ $personal->id }}">
                    
                     <td>{{ $personal->id }}</td>

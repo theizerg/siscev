@@ -9,7 +9,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-primary card-outline card-header">
-          <h4>Alta de votos 1x10</h4>
+          <h4>Alta de votos 1x10 </h4>
         </div>
 
         <div class="card-body">

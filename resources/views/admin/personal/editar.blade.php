@@ -1,84 +1,28 @@
 @extends('layouts.admin')
 
 @section('title', 'Personal')
-@section('page_title', 'Registro del 1x10')
+@section('page_title', 'Editar datos del votante 1x10')
 @section('content')
- <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="btn-group">
-          @can('VerRole')
-          <a href="{{ url('solicitudes') }}" class="btn  green darken-4 text-white "><i class="mdi mdi-sort-alphabetical-ascending"></i> Listado</a>
-          @endcan
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card card-success">
-          <div class="card-header  ">
-           
-              <h3>Datos para registrar el 1x10</h3>
-            </div> 
-          <div class="card-body">
-            
-                 <form method="post"  action="{{url('personal/1p10/guardar')}} "  autocomplete="off">
-                  {{ csrf_field() }}
+  <div class="col-md-12">
+    <div class="card card-line-primary">
+      
+     
+       <!-- /.card-header -->
+          <div class="card-body table-responsive">
+               {!! Form::model($personales, ['url' => ['personal/1p10/guardareditado',$personales->id],'method' => 'PUT']) !!}
 
-              <div class="row">
+             <div class="row">
                
                 @include('admin.personal.partials.formp')
               
-                 </div>
-               </div>
-                <div class="col-12 mt-4">
-                    <table id="tableExport" class="display table table-hover ">
-                  <thead>
-                    <tr>
-                    <th>#</th>
-                    <th>Empleado</th>
-                    <th>Cédula</th>
-                    <th>Ente</th>
-                    <th>Gerencia</th>
-                    <th>Estado del empleado</th>
-                    
-                    <th>Opciones</th> 
-                    </tr>
-                    </thead>
-                    <tbody>
-                    @foreach ($personales as $personal)
-                 
-                    <tr class="row{{ $personal->id }}">
-                   
-                    <td>{{ $personal->id}}</td>
-                    <td>{{ $personal->funcionario->display_name }} - ({{ $personal->funcionario->ente->descripcion }})</td>
-                    <td>{{ $personal->display_name }}</td>
-                    <td>{{ $personal->cedula }}</td>
-                    <td>{{ $personal->telefono }}</td>
-                    
-                    <td>{{ $personal->estado->name }} - {{ $personal->municipio->name }} - {{ $personal->parroquia->parroquia }}</td>
-                    <td>
-                       <a href="{{ url('personal/1x10/'.$personal->id) }}" class="btn btn-round green darken-3"><i class="mdi mdi-pencil mt-2 text-white" data-toggle="tooltip" data-placement="top"
-                      title="Editar datos."></i></a> 
-
-
-                    </td>
-                    </tr>
-                   @include('layouts.partials.modal.personal.updatepersonal')
-                    @endforeach
-                   
-                    </tbody>                
-                </table>
- 
               </div>
-              </div>
-             
-            </form>
-       </div>
-   </div>
-</div>
-</div>
+
+             {!! Form::close()!!}
+          
+          </div>
+          <!-- /.card-body -->
+      </div>
+  </div>
 @endsection
 
 @push('scripts')

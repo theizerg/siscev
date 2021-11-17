@@ -227,4 +227,51 @@ class PersonalController extends Controller
         );
              return redirect()->back()->with($notification);
     }
+
+
+      /**
+     * Edit the specified resource from storage.
+     *
+     * @param  \App\Models\Personal  $personal
+     * @return \Illuminate\Http\Response
+     */
+    public function editar($id)
+    {
+       $personales = Personal1p10::find($id);
+       $funcionario = $personales->funcionario_id;
+
+
+        return view('admin.personal.editar',compact('personales','funcionario'));
+    }
+
+   public function guardareditado (Request $request,$id)
+    {
+       $personal = Personal1p10::find($id);
+     
+        $personal->tx_nombres = $request->tx_nombres;
+        $personal->tx_apellidos = $request->tx_apellidos;
+        $personal->cedula = $request->cedula;
+        $personal->telefono = $request->telefono;
+        $personal->centro_electoral = $request->centro_electoral;
+        $personal->fecha_emisison = date('d/m/Y');
+        //$personal->personal_id = $request->personal_id;
+        $personal->usuario_id = \Auth::user()->id;
+        $personal->estado_id = $request->estado_id;
+        $personal->municipio_id = $request->municipio_id;
+        $personal->parroquia_id = $request->parroquia_id;
+
+        $personal->save();
+
+         if ($personal) {
+              $notification = array(
+            'message' => '¡Datos ingresados!',
+            'alert-type' => 'success'
+        );
+             return redirect()->back()->with($notification);
+        }
+
+
+       
+    }
+
 }
