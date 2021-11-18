@@ -92,8 +92,7 @@ class VotantesController extends Controller
 
     public function votante(Request $request)
     {   
-        //  dd($request);
-
+          
            if ($request->ente_id == 1)  {
                
             $voto = Votantes::where('gerencia_id',$request->estado_id)
@@ -148,29 +147,31 @@ class VotantesController extends Controller
     public function store(Request $request)
     {
       
-        $votante = Votantes::where('personal_id',$request->personal_id)->count();
+        $votante = Votantes::where('personal_id',$request->personal_id)->first();
 
-        if ($votante <> 0) {
-            
-             $notification = array(
-            'message' => '¡El funcionario ya existe!',
+       
+
+        
+
+       $votante->gerencia_id = $request->gerencia_id;
+       $votante->ente_id = $request->ente_id;
+       $votante->personal_id = $request->personal_id;
+       $votante->confirmed = $request->confirmed;
+       $votante->save();
+
+       if ($votante->confirmed == 0) {
+           $notification = array(
+            'message' => '¡No ejerció el voto!',
             'alert-type' => 'error'
         );
              return redirect()->back()->with($notification);
-        }
+       }
 
-        $votos = new Votantes();
-
-       $votos->gerencia_id = $request->gerencia_id;
-       $votos->ente_id = $request->ente_id;
-       $votos->personal_id = $request->personal_id;
-       $votos->confirmed = $request->confirmed;
-
-       $votos->save();
+       //dd($votante);
 
          $notification = array(
-            'message' => '¡Datos ingresados!',
-            'alert-type' => 'success'
+            'message' => '¡Ya ejerció el voto!',
+            'alert-type' => 'info'
         );
              return redirect()->back()->with($notification);
 
