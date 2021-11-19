@@ -47,7 +47,7 @@
                   </div>
                   
                     <div class="card-body px-lg-5 py-lg-5 text-white  text-center">
-                        <i class="mdi mdi-laptop fa-7x"></i>
+                        <img src="{{ ('images/logo/logobandesblanco.png') }}" width="175" alt="">
                         <p class="text-muted text-white">Sistema desarrollado para el control y estadística de votos.</p>
                         
                     </div>

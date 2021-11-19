@@ -37,7 +37,7 @@
                   @php
                     $entes = App\Models\Ente::pluck('descripcion', 'id')
                   @endphp
-                     {!! Form::select('ente_id', $entes, null,array('class' => 'form-control input-sm select2 ente_form','placeholder'=>'Selecione el ente ','data-width'=>'100%')) !!}    
+                     {!! Form::select('ente_id', $entes, null,array('class' => 'form-control input-sm  ente_form','placeholder'=>'Selecione el ente ','data-width'=>'100%')) !!}    
                
                   </div>
                    <div class="form-group">
@@ -82,7 +82,7 @@
                       </tr>                             
                     </thead>
                     <tbody>
-                      @foreach($votantes->sortByDesc('created_at') as $c)
+                      @foreach($votantes->sortByDesc('updated_at') as $c)
                         <tr>
                           <td>
                               {{ $c->personal->tx_nombres }} {{ $c->personal->tx_apellidos }}
@@ -92,8 +92,8 @@
                              {{ $c->gerencia->descricion }}
                           </td>
                          <td><h2 class="badge text-white {{ $c->confirmed ? 'badge-success' : 'badge-danger' }}">{{ $c->display_status }}</h2></td>
-                          @if($c->created_at != null)
-                            <td>{{ date_format( $c->created_at, 'd/m/Y H:i:s' ) }}</td>
+                          @if($c->updated_at != null)
+                            <td>{{ date_format( $c->updated_at, 'd/m/Y H:i:s' ) }}</td>
                           @else
                             <td></td>
                           @endif

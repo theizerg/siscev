@@ -1,8 +1,7 @@
  <!-- Brand Logo -->
-    <a href="{{url ('/') }}" class="brand-link">
-      <img src="{{ asset('images/logo/logo-login.png') }}" alt="AdminLTE Logo" class="brand-image"
-           style="opacity: .8">
-      <span class="brand-text font-weight-light">SISCEV</span>
+    <a href="{{url ('/') }}" >
+     
+     
     </a>
      <!-- Sidebar -->
     <div class="sidebar">
