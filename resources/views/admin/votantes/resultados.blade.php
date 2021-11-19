@@ -6,12 +6,7 @@
       <div class="container">
         <div class="col-md-6">
           <div class="btn-group">
-           
-           @can('RegistrarRole')
-            <div class="btn-group">
-             <button type="button" class="btn btn-primary blue darken-4 mb-4" data-toggle="modal" data-target="#createModalRole"><i class="fa fa-plus-square"></i> Agregar role </button>
-             </div><br> 
-           @endcan
+
           </div>
         </div>
       <br>
@@ -57,11 +52,11 @@
 
   // Add data
   chart.data = [{
-    "country": "FUNCIONARIOS QUE EJERCIERON EL VOTO",
+    "country": "EJERCIERON EL VOTO",
     "litres":  {{$voto}},
   }, 
   {
-    "country": "FUNCIONARIOS QUE NO EJERCIERON EL VOTO",
+    "country": "NO EJERCIERON EL VOTO",
     "litres":{{$Novoto}},
   }
     ];
