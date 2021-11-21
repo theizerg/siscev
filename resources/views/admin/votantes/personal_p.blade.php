@@ -87,6 +87,7 @@
                     <thead>
                       <tr>
                         <th>Nombre completo del funcionario</th>
+                        <th>Cédula del votante</th>
                         <th>Votante 1x10</th>
                        
                         <th>¿Ejerció el voto?</th>
@@ -97,8 +98,9 @@
                       @foreach($votantes->sortByDesc('created_at') as $c)
                         <tr>
                           <td>
-                              {{ $c->personal->tx_nombres }} {{ $c->personal->tx_apellidos }} ({{ $c->personal->ente->descripcion }})
+                              {{ $c->personal->tx_nombres }} ({{ $c->personal->ente->descripcion }})
                           </td>
+                          <td>{{ $c->persona->cedula }}</td>
                           <td>{{ $c->persona->display_name }}</td>
                           
                          <td><h2 class="badge text-white {{ $c->confirmed ? 'badge-success' : 'badge-danger' }}">{{ $c->display_status }}</h2></td>

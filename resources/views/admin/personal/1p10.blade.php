@@ -59,7 +59,7 @@
                     
                     <td>{{ $personal->estado->name }} - {{ $personal->municipio->name }} - {{ $personal->parroquia->parroquia }}</td>
                     <td>
-                       <a href="{{ url('personal/1x10/'.$personal->id) }}" class="btn btn-round green darken-3"><i class="mdi mdi-pencil mt-2 text-white" data-toggle="tooltip" data-placement="top"
+                       <a href="{{ url('personal/1x10/'.$personal->id) }}" target="_blank" class="btn btn-round green darken-3"><i class="mdi mdi-pencil mt-2 text-white" data-toggle="tooltip" data-placement="top"
                       title="Editar datos."></i></a> 
 
 

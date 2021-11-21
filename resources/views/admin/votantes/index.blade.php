@@ -75,6 +75,7 @@
                     <thead>
                       <tr>
                         <th>Nombre completo del funcionario</th>
+                         <th>Cédula del funcionario</th>
                         <th>Ente</th>
                         <th>Gerencia del funcionario</th>
                         <th>¿El funcionario ejerció el voto?</th>
@@ -86,6 +87,9 @@
                         <tr>
                           <td>
                               {{ $c->personal->tx_nombres }} {{ $c->personal->tx_apellidos }}
+                          </td>
+                          <td>
+                              {{ $c->personal->cedula }} 
                           </td>
                           <td>{{ $c->ente->descripcion }}</td>
                           <td>
