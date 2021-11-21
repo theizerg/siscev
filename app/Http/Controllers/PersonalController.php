@@ -7,6 +7,8 @@ use App\Models\Personal1p10;
 use Illuminate\Http\Request;
 use App\Models\Estado;
 use App\Models\Municipio;
+use App\Models\Votantes;
+
 
 class PersonalController extends Controller
 {
@@ -51,6 +53,16 @@ class PersonalController extends Controller
 
         $personal->save();
 
+
+
+        $votante = new Votantes();
+        $votante->gerencia_id = $request->gerencia_id;
+        $votante->personal_id = $personal->id;
+        $votante->ente_id = $request->ente_id;
+        $votante->confirmed = 0;
+
+        $votante->save();
+
         if ($personal) {
               $notification = array(
             'message' => '¡Datos ingresados!',
@@ -69,6 +81,7 @@ class PersonalController extends Controller
     public function guardar(Request $request)
     {
 
+         dd($funcionario);
         $cedula = $request->cedula;
 
         
@@ -237,9 +250,11 @@ class PersonalController extends Controller
      */
     public function editar($id)
     {
+
+
        $personales = Personal1p10::find($id);
        $funcionario = Personal::where('id',$personales->personal_id)->first();
-      // dd($funcionario);
+    
 
 
         return view('admin.personal.editar',compact('personales','funcionario'));
